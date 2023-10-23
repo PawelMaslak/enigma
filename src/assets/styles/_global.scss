@@ -1,0 +1,46 @@
+//Global variables
+//Fonts
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"), url(../fonts/Lato-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: local("Lato-Regular"), url(../fonts/Lato-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Lato-Light";
+    src: local("Lato-Light"), url(../fonts/Lato-Light.ttf) format("truetype");
+}
+
+$fontBold: "Lato-Bold";
+$fontRegular: "Lato-Regular";
+$fontLight: "Lato-Light";
+
+$devColour: #000;
+
+$colourA: #E7E5E3;
+$colourB: #E3C5AC;
+
+$fontColor: rgb(148, 163, 184);
+$textColour: #f8f9fa;
+
+.title {
+    font-family: $fontBold;
+    text-transform: uppercase;
+}
+
+
+.text {
+    font-weight: 600;
+    font-family: $fontRegular;
+}
+
+
+$colorA: #426375;
+$colorB: #BBD6f7;
+$colorC: #D4EAF7;
+$colorD: #657075;
+$colorE: #89CFF5;
