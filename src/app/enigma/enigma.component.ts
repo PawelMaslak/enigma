@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data-service';
 
 @Component({
   selector: 'app-enigma',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./enigma.component.scss']
 })
 export class EnigmaComponent {
-
 }

@@ -1,0 +1,32 @@
+[
+    {
+        "Name": "I",
+        "Letters": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+        "NotchLetter": "Y",
+        "TurnOverLetter": "Q"
+    },
+    {
+        "Name": "II",
+        "Letters": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+        "NotchLetter": "M",
+        "TurnOverLetter": "E"
+    },
+    {
+        "Name": "III",
+        "Letters": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+        "NotchLetter": "D",
+        "TurnOverLetter": "V"
+    },
+    {
+        "Name": "IV",
+        "Letters": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+        "NotchLetter": "R",
+        "TurnOverLetter": "J"
+    },
+    {
+        "Name": "V",
+        "Letters": "VZBRGITYUPSDNHLXAWMJQOFECK",
+        "NotchLetter": "H",
+        "TurnOverLetter": "Z"
+    }
+]
