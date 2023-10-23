@@ -29,7 +29,6 @@ export class Rotor {
         this.ringSettingNumbersArray = EnigmaHelper.getRingSettingsNumberArray();
     }
 
-    //The direction of stepping the rotor is that the letters move down on the screen.
     public stepRotor(step: number) {
         const alphabetLength = 26;
         const shiftedEntryCharacters = new Array(alphabetLength);
@@ -46,12 +45,26 @@ export class Rotor {
         this.internalWiringLetters = shiftedInternalWiring;
         this.entryLetters = shiftedEntryCharacters;
         this.currentPositionLetter = this.entryLetters[0];
-
-        console.log(this.entryLetters);
-        console.log(this.internalWiringLetters);
     }
-
-    public stepRingSetting(step: number) {
-
+    
+    stepRingSetting(index: number) {
+        const alphabetLength = this.entryLetters.length;
+        const shiftedRingSettingNumbersArray = new Array(alphabetLength);
+        const shiftedInternalWiring = new Array(alphabetLength);
+    
+        for (let i = 0; i < alphabetLength; i++) {
+            const currentCharacter = this.internalWiringLetters[i];
+            const currentCharacterIndex = this.alphabetArray.indexOf(currentCharacter);
+    
+            const shiftedCharacterIndex = (currentCharacterIndex + index + alphabetLength) % alphabetLength;
+            const idx = (i + index + alphabetLength) % alphabetLength;
+    
+            shiftedInternalWiring[idx] = this.alphabetArray[shiftedCharacterIndex];
+            shiftedRingSettingNumbersArray[i] = this.ringSettingNumbersArray[idx];
+        }
+    
+        this.internalWiringLetters = shiftedInternalWiring;
+        this.ringSettingNumbersArray = shiftedRingSettingNumbersArray;
+        this.ringSetting = shiftedRingSettingNumbersArray[0];
     }
 }

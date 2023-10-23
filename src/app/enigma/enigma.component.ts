@@ -17,12 +17,10 @@ export class EnigmaComponent {
   }
 
   shift(i: number) {
-    console.log('Moving number by ', i);
     this.selectedRotor.stepRotor(i);
   }
 
   shiftRing(i: number) {
-    console.log('Shifting ring setting by ', i);
     this.selectedRotor.stepRingSetting(i);
   }
 }
