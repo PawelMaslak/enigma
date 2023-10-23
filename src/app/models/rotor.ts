@@ -28,4 +28,30 @@ export class Rotor {
         this.alphabetArray = EnigmaHelper.getAlphabetArray();
         this.ringSettingNumbersArray = EnigmaHelper.getRingSettingsNumberArray();
     }
+
+    //The direction of stepping the rotor is that the letters move down on the screen.
+    public stepRotor(step: number) {
+        const alphabetLength = 26;
+        const shiftedEntryCharacters = new Array(alphabetLength);
+        const shiftedInternalWiring = new Array(alphabetLength);
+
+        for (let i = 0; i < alphabetLength; i++) {
+            const sourceIndex = i + step;
+            const targetIndex = (sourceIndex + alphabetLength) % alphabetLength;
+
+            shiftedEntryCharacters[targetIndex] = this.entryLetters[i];
+            shiftedInternalWiring[targetIndex] = this.internalWiringLetters[i];
+        }
+
+        this.internalWiringLetters = shiftedInternalWiring;
+        this.entryLetters = shiftedEntryCharacters;
+        this.currentPositionLetter = this.entryLetters[0];
+
+        console.log(this.entryLetters);
+        console.log(this.internalWiringLetters);
+    }
+
+    public stepRingSetting(step: number) {
+
+    }
 }
