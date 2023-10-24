@@ -2,19 +2,10 @@
     <div class="row">
         <app-logo></app-logo>
     </div>
-    <div class="row">
-        <button class="btn btn-primary" (click)="shiftRing(-1)">
-            -
-        </button>
-        <div>
-            {{selectedRotor.ringSetting}}
-        </div>
-        <button class="btn btn-primary" (click)="shiftRing(1)">
-            +
-        </button>
-        <app-rotor></app-rotor>
-        <app-rotor></app-rotor>
-        <app-rotor></app-rotor>
+    <div class="d-flex flex-direction-column justify-content-center">
+        <app-rotor [rotor]="rotorOne"></app-rotor>
+        <app-rotor [rotor]="rotorTwo"></app-rotor>
+        <app-rotor [rotor]="rotorThree"></app-rotor>
     </div>
     <div class="row">
         <app-output-lamps></app-output-lamps>

@@ -9,18 +9,14 @@ import { Rotor } from '../models/rotor';
 })
 export class EnigmaComponent {
   rotors: Rotor[];
-  selectedRotor: Rotor;
+  rotorOne: Rotor;
+  rotorTwo: Rotor;
+  rotorThree: Rotor;
 
   constructor(dataService: DataService) {
     this.rotors = dataService.GetRotorCollection();
-    this.selectedRotor = this.rotors[0];
-  }
-
-  shift(i: number) {
-    this.selectedRotor.stepRotor(i);
-  }
-
-  shiftRing(i: number) {
-    this.selectedRotor.stepRingSetting(i);
+    this.rotorOne = this.rotors[0];
+    this.rotorTwo = this.rotors[1];
+    this.rotorThree = this.rotors[2];
   }
 }

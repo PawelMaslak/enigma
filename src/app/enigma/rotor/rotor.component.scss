@@ -1,0 +1,73 @@
+.window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    width: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(188, 194, 203, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: 2px 2px 2px #3b3d3c;
+
+    .current-rotor-value {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 4px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        text-shadow: 0px 1px #AAAAAA;
+        box-shadow: rgba(201, 203, 188, 1) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+}
+
+.rotor {
+    margin: 0 20px;
+    width: 20px;
+    height: 150px;
+    border: 3px solid black;
+    box-shadow: 2px 2px 2px #3b3d3c;
+    background:
+        linear-gradient(0deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(42, 42, 42, 1) 2%,
+            rgba(245, 245, 245, 1) 28%,
+            rgba(52, 52, 52, 1) 30%,
+            rgba(216, 216, 216, 1) 31%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(212, 212, 212, 1) 67%,
+            rgba(45, 45, 45, 1) 69%,
+            rgba(226, 226, 226, 1) 70%,
+            rgba(42, 42, 42, 1) 98%,
+            rgba(0, 0, 0, 1) 100%);
+
+    .character {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Tahoma;
+        color: #222222;
+        text-shadow: 0px 1px #AAAAAA;
+        user-select: none;
+    }
+
+    .next-character {
+        height: 46px;
+    }
+
+    .focus-character {
+        height: 55px;
+    }
+
+    .previous-character {
+        height: 44px;
+    }
+
+    .next-character,
+    .previous-character:hover {
+        cursor: pointer;
+    }
+}
+
+

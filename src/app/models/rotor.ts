@@ -53,14 +53,14 @@ export class Rotor {
         const shiftedInternalWiring = new Array(alphabetLength);
     
         for (let i = 0; i < alphabetLength; i++) {
-            const currentCharacter = this.internalWiringLetters[i];
-            const currentCharacterIndex = this.alphabetArray.indexOf(currentCharacter);
+            const currentLetter = this.internalWiringLetters[i];
+            const currentLetterIndex = this.alphabetArray.indexOf(currentLetter);
     
-            const shiftedCharacterIndex = (currentCharacterIndex + index + alphabetLength) % alphabetLength;
-            const idx = (i + index + alphabetLength) % alphabetLength;
+            const shiftedLetterIndex = (currentLetterIndex + index + alphabetLength) % alphabetLength;
+            const indexInShiftedLettersArray = (i + index + alphabetLength) % alphabetLength;
     
-            shiftedInternalWiring[idx] = this.alphabetArray[shiftedCharacterIndex];
-            shiftedRingSettingNumbersArray[i] = this.ringSettingNumbersArray[idx];
+            shiftedInternalWiring[indexInShiftedLettersArray] = this.alphabetArray[shiftedLetterIndex];
+            shiftedRingSettingNumbersArray[i] = this.ringSettingNumbersArray[indexInShiftedLettersArray];
         }
     
         this.internalWiringLetters = shiftedInternalWiring;

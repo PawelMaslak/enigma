@@ -1,1 +1,12 @@
-Rotor
+<div class="rotor-section d-flex">
+    <div class="window">
+        <span class="current-rotor-value">
+            {{this.rotor.entryLetters[0]}}
+        </span>
+    </div>
+    <div class="rotor">
+        <div class="character next-character" (click)="step(1)">{{this.rotor.entryLetters[1]}}</div>
+        <div class="character focus-character">{{this.rotor.entryLetters[0]}}</div>
+        <div class="character previous-character" (click)="step(-1)">{{this.rotor.entryLetters[25]}}</div>
+    </div>
+</div>
