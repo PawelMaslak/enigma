@@ -1,0 +1,19 @@
+.light {
+    font-size: 1.5rem;
+    color: #D0D0D0;
+    border: 3px solid black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0px 1px #AAAAAA;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 10%, rgba(0,0,0,1) 45%);
+}
+
+.light-on {
+    color: #2b2b27;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(252,221,21,1) 17%);
+}

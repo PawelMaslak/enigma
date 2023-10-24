@@ -13,4 +13,8 @@ export class RotorComponent {
   public step(i: number) : void {
     this.rotor.stepRotor(i);
   }
+
+  public stepRingSetting(i: number) {
+    this.rotor.stepRingSetting(i);
+  }
 }
