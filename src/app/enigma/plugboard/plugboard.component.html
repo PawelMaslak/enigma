@@ -1,20 +1,34 @@
-<div class="container">
+<div class="container pt-3 pb-5">
     <div class="plugboard">
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center">
-                <div class="letter">A</div>
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of firstRow">
+                <div class="letter">{{char}}</div>
                 <div class="holes">
-                    <div class="top">top</div>
-                    <div class="bottom">bottom</div>
+                    <span class="top cable-hole"></span>
+                    <span class="bottom cable-hole"></span>
                 </div>
-                <div class="number">1</div>
+                <div class="number">{{characterNumber(char)}}</div>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            Row 2
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of secondRow">
+                <div class="letter">{{char}}</div>
+                <div class="holes">
+                    <span class="top cable-hole"></span>
+                    <span class="bottom cable-hole"></span>
+                </div>
+                <div class="number">{{characterNumber(char)}}</div>
+            </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            Row 3
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of thirdRow">
+                <div class="letter">{{char}}</div>
+                <div class="holes">
+                    <span class="top cable-hole"></span>
+                    <span class="bottom cable-hole"></span>
+                </div>
+                <div class="number">{{characterNumber(char)}}</div>
+            </div>
         </div>
     </div>
 </div>

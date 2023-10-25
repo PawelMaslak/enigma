@@ -1,87 +1,18 @@
 <div class="container">
     <div class="lampboard">
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="light">
-                Q
-            </div>
-            <div class="light">
-                W
-            </div>
-            <div class="light">
-                E
-            </div>
-            <div class="light">
-                R
-            </div>
-            <div class="light">
-                T
-            </div>
-            <div class="light">
-                Z
-            </div>
-            <div class="light">
-                U
-            </div>
-            <div class="light">
-                I
-            </div>
-            <div class="light">
-                O
+            <div class="lamp-section" *ngFor="let char of firstRow">
+                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="light">
-                A
-            </div>
-            <div class="light">
-                S
-            </div>
-            <div class="light">
-                D
-            </div>
-            <div class="light">
-                F
-            </div>
-            <div class="light">
-                G
-            </div>
-            <div class="light">
-                H
-            </div>
-            <div class="light">
-                J
-            </div>
-            <div class="light">
-                K
+            <div class="lamp-section" *ngFor="let char of secondRow">
+                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="light">
-                P
-            </div>
-            <div class="light">
-                Y
-            </div>
-            <div class="light">
-                X
-            </div>
-            <div class="light">
-                C
-            </div>
-            <div class="light">
-                V
-            </div>
-            <div class="light">
-                B
-            </div>
-            <div class="light">
-                N
-            </div>
-            <div class="light">
-                M
-            </div>
-            <div class="light">
-                L
+            <div class="lamp-section" *ngFor="let char of thirdRow">
+                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
             </div>
         </div>
     </div>

@@ -1,11 +1,14 @@
+.lamp-section {
+    width: 40px;
+    height: 40px;
+    margin: 5px 15px;
+}
+
 .light {
     font-size: 1.5rem;
     color: #D0D0D0;
     border: 3px solid black;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
-    margin: 5px 15px;
     display: flex;
     align-items: center;
     justify-content: center;

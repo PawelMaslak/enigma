@@ -19,4 +19,10 @@ export class EnigmaComponent {
     this.rotorTwo = this.rotors[1];
     this.rotorThree = this.rotors[2];
   }
+
+  getCurrentSetting() {
+    console.log(this.rotorOne);
+    console.log(this.rotorTwo);
+    console.log(this.rotorThree);
+  }
 }
