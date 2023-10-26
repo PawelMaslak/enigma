@@ -1,34 +1,40 @@
 <div class="container pt-3 pb-5">
     <div class="plugboard">
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of firstRow">
-                <div class="letter">{{char}}</div>
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of firstRow" (click)="pairKey(plug)">
+                <div class="letter">{{plug.letter}}</div>
                 <div class="holes">
                     <span class="top cable-hole"></span>
                     <span class="bottom cable-hole"></span>
                 </div>
-                <div class="number">{{characterNumber(char)}}</div>
+                <div class="number">{{plug.letterNumber}}</div>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of secondRow">
-                <div class="letter">{{char}}</div>
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of secondRow" (click)="pairKey(plug)">
+                <div class="letter">{{plug.letter}}</div>
                 <div class="holes">
                     <span class="top cable-hole"></span>
                     <span class="bottom cable-hole"></span>
                 </div>
-                <div class="number">{{characterNumber(char)}}</div>
+                <div class="number">{{plug.letterNumber}}</div>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let char of thirdRow">
-                <div class="letter">{{char}}</div>
+            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of thirdRow" (click)="pairKey(plug)">
+                <div class="letter">{{plug.letter}}</div>
                 <div class="holes">
                     <span class="top cable-hole"></span>
                     <span class="bottom cable-hole"></span>
                 </div>
-                <div class="number">{{characterNumber(char)}}</div>
+                <div class="number">{{plug.letterNumber}}</div>
             </div>
+        </div>
+    </div>
+    <div class="plugboard-summary" *ngIf="letterPairs">
+        <p>Plugged letters:</p>
+        <div class="letters" *ngFor="let pair of letterPairs">
+            {{pair.letterPair}}
         </div>
     </div>
 </div>

@@ -1,3 +1,5 @@
+import { PlugboardLetter } from "../models/plugboardletter";
+
 export default class EnigmaHelper {
     public static getAlphabetArray(): string[] {
         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -5,6 +7,15 @@ export default class EnigmaHelper {
 
     public static getQwertzKeyboardLayout(): string[] {
         return 'QWERTZUIOASDFGHJKPYXCVBNML'.split('');
+    }
+
+    public static getLetterNumberInAlphabet(letter: string) : number {
+        return this.getAlphabetArray().indexOf(letter) + 1;
+    }
+
+    public static getPlugboardLetters(): PlugboardLetter[] {
+        const qwertzLayout = this.getQwertzKeyboardLayout();
+        return qwertzLayout.map(letter => new PlugboardLetter(letter));
     }
 
     public static getFirstRowQwertzKeyboardLayout(): string[] {
