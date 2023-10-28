@@ -14,31 +14,78 @@ export class PlugboardComponent {
   thirdRow: PlugboardLetter[] = this.plugboardLetters.slice(17, 26);
   keyPairs: PlugboardLetter[] = [];
   letterPairs: LetterPair[] = [];
+  allowedPairsNumber: number = 10;
+  colours: string[] = EnigmaHelper.getColourList();
 
-  //When user clicks one of the plugboard entries -> add letter to the plugboard collection.
-  //When user clicks once again at the plugboard entry -> remove item from collection.
-  //If there are 2 elements -> make a key pair -> if one of the elements is removed -> move the other one at the end of the list.
+  public getLetterPairString(index: number): string {
+    return `${this.letterPairs[index].letterPair}`;
+  }
+
+  public letterPlugged(letter: string): boolean {
+    return this.keyPairs.find(x => x.letter === letter) != null;
+  }
+
+  //Allow for pair removal when there are already 10 pairs
   public pairKey(plugboardLetter: PlugboardLetter): void {
-    if (this.keyPairs.find(x => x.letter === plugboardLetter.letter)) {
-      //Check if the item is in the letter pairs -> if it is - remove the pair.
-      console.log(`Letter ${plugboardLetter.letter} is already in the list...removing the letter!`);
-      this.removeItem(plugboardLetter);
+    if (!this.canCreatePair(plugboardLetter)) {
+      alert(`You cannot create more than ${this.allowedPairsNumber} letter pairs.`);
     }
     else {
-      this.keyPairs.push(plugboardLetter);
-
-      if(this.keyPairs.length % 2 == 0) {
-        //Handle maximum amount of items in array - max 10 pairs
-        //Check if the pair exists before adding it - if exists -> remove
-        this.letterPairs.push(new LetterPair(this.keyPairs[0], this.keyPairs[1]))
-        this.clearKeyPairs();
-        console.log(this.letterPairs);
-      }
+      this.processInput(plugboardLetter);
     }
   }
 
-  private clearKeyPairs() {
-    this.keyPairs.splice(0,2);
+  private addToKeyPairs(plugboardLetter: PlugboardLetter): void {
+    this.keyPairs.push(plugboardLetter);
+    plugboardLetter.togglePlug();
+  }
+
+  private allocateColour(letterPair: LetterPair, action: string): void {
+    if (action === "add") {
+      const pickedColour = this.colours.shift();
+      letterPair.pairColour = pickedColour;
+      letterPair.letterOne.pairColour = pickedColour;
+      letterPair.letterTwo.pairColour = pickedColour;
+    }
+    else {
+      const pairColour = letterPair.pairColour;
+      this.colours.push(pairColour);
+      [letterPair, letterPair.letterOne, letterPair.letterTwo].forEach((item) => {
+        item.pairColour = null;
+      });
+    }
+  }
+
+  private canCreatePair(plugboardLetter: PlugboardLetter): boolean {
+    const newPairAllowed = this.letterPairs.length < this.allowedPairsNumber;
+    return newPairAllowed || plugboardLetter.isPlugged;
+  }
+
+  private createLetterPair(): void {
+    const indexOfLastLetter = this.getIndexOfLastItem(this.keyPairs);
+    const letterOne = this.keyPairs[indexOfLastLetter - 1];
+    const letterTwo = this.keyPairs[indexOfLastLetter];
+    const letterPair = new LetterPair(letterOne, letterTwo);
+    this.allocateColour(letterPair, 'add');
+    this.letterPairs.push(letterPair);
+  }
+
+  private getIndexOfLastItem<T>(array: T[]): number {
+    return array.length > 0 ? array.length - 1 : -1;
+  }
+
+  //Some checks condition and returns boolean for any element of the array.
+  private isLetterInKeyPairs(plugboardLetter: PlugboardLetter): boolean {
+    return this.keyPairs.some((keyPair) => keyPair.letter === plugboardLetter.letter);
+  }
+
+  private isPartOfLetterPair(plugboardLetter: PlugboardLetter): LetterPair {
+    for (const letterPair of this.letterPairs) {
+      if (letterPair.letterOne === plugboardLetter || letterPair.letterTwo === plugboardLetter) {
+        return letterPair;
+      }
+    }
+    return null;
   }
 
   private removeItem(plugboardLetter: PlugboardLetter): void {
@@ -46,5 +93,37 @@ export class PlugboardComponent {
     if (index > -1) {
       this.keyPairs.splice(index, 1);
     }
+  }
+
+  private processInput(plugboardLetter: PlugboardLetter): void {
+    if (this.isLetterInKeyPairs(plugboardLetter)) {
+      const letterPair = this.isPartOfLetterPair(plugboardLetter);
+      if (letterPair) {
+        this.removeLetterPair(letterPair);
+      } else {
+        this.removeLetterFromKeyPairs(plugboardLetter);
+      }
+    } else {
+      this.addToKeyPairs(plugboardLetter);
+      if (this.keyPairs.length % 2 === 0) {
+        this.createLetterPair();
+      } else {
+        plugboardLetter.pairColour = 'brown';
+      }
+    }
+  }
+
+  private removeLetterFromKeyPairs(plugboardLetter: PlugboardLetter): void {
+    plugboardLetter.togglePlug();
+    this.removeItem(plugboardLetter);
+  }
+
+  private removeLetterPair(letterPair: LetterPair): void {
+    letterPair.letterOne.togglePlug();
+    letterPair.letterTwo.togglePlug();
+    this.removeItem(letterPair.letterOne);
+    this.removeItem(letterPair.letterTwo);
+    this.letterPairs.splice(this.letterPairs.indexOf(letterPair), 1);
+    this.allocateColour(letterPair, 'remove');
   }
 }

@@ -1,29 +1,13 @@
-.plug {
-    width: 80px;
-    height: 55px;
-}
-
-.letter,
-.number {
-    font-size: 1.2rem;
-    margin: 5px;
-    text-shadow: 0px 1px #AAAAAA;
-    color: #E1C16E;
-}
+@import '../../../assets/styles/global';
 
 .holes {
     display: flex;
     flex-direction: column;
 
     .cable-hole {
-        background-color: black;
         width: 22px;
         height: 22px;
         border-radius: 50%;
-    }
-
-    .cable-hole-plugged {
-        background-color: red;
     }
 
     .top {
@@ -38,4 +22,31 @@
 
 .holes:hover {
     cursor: pointer;
+}
+
+.letter,
+.number {
+    font-size: 1.2rem;
+    margin: 5px;
+    text-shadow: 0px 1px #AAAAAA;
+    color: #E1C16E;
+}
+
+.letter-pair {
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    border: 2px solid #E1C16E;;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.plug {
+    width: 80px;
+    height: 55px;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

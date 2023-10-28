@@ -9,7 +9,7 @@ export default class EnigmaHelper {
         return 'QWERTZUIOASDFGHJKPYXCVBNML'.split('');
     }
 
-    public static getLetterNumberInAlphabet(letter: string) : number {
+    public static getLetterNumberInAlphabet(letter: string): number {
         return this.getAlphabetArray().indexOf(letter) + 1;
     }
 
@@ -37,5 +37,9 @@ export default class EnigmaHelper {
 
     public static getInternalWiringArray(internalWiring: string): string[] {
         return internalWiring.split("");
+    }
+
+    public static getColourList(): string[] {
+        return ['red', 'blue', 'green', 'yellow', 'teal', 'pink', 'purple', 'aqua', 'chocolate', 'orange'];
     }
 }

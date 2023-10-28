@@ -5,6 +5,7 @@ export class PlugboardLetter {
     letterNumber: number;
     isPlugged: boolean;
     pluggedLetter: string;
+    pairColour?: string;
 
     constructor(
         letter: string
@@ -14,13 +15,17 @@ export class PlugboardLetter {
         this.pluggedLetter = '';
         this.letterNumber = EnigmaHelper.getLetterNumberInAlphabet(letter);
     }
+
+    public togglePlug(): void {
+        this.isPlugged = !this.isPlugged;
+    }
 }
 
 export class LetterPair {
     letterOne: PlugboardLetter;
     letterTwo: PlugboardLetter;
     letterPair: string;
-    pairColour: string;
+    pairColour?: string;
 
     constructor(
         letterOne: PlugboardLetter,
@@ -29,11 +34,5 @@ export class LetterPair {
         this.letterOne = letterOne;
         this.letterTwo = letterTwo;
         this.letterPair = `${letterOne.letter}${letterTwo.letter}`;
-        this.pairColour = this.getRandomColour();
-    }
-
-    //TODO: Assign random colour from the approved colour list to mark the pair on plugboard.
-    private getRandomColour(): string {
-        return '';
     }
 }
