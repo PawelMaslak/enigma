@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import EnigmaHelper from 'src/app/helpers/enigma-helper';
+import { Plugboard } from 'src/app/models/plugboard';
 import { LetterPair, PlugboardLetter } from 'src/app/models/plugboardletter';
 
 @Component({
@@ -7,11 +8,22 @@ import { LetterPair, PlugboardLetter } from 'src/app/models/plugboardletter';
   templateUrl: './plugboard.component.html',
   styleUrls: ['./plugboard.component.scss']
 })
-export class PlugboardComponent {
-  private plugboardLetters: PlugboardLetter[] = EnigmaHelper.getPlugboardLetters();
-  firstRow: PlugboardLetter[] = this.plugboardLetters.slice(0, 9);
-  secondRow: PlugboardLetter[] = this.plugboardLetters.slice(9, 17);
-  thirdRow: PlugboardLetter[] = this.plugboardLetters.slice(17, 26);
+
+//Allow for new input component -> Plugboard! Modify the methods to make visible letter pairs etc.
+export class PlugboardComponent implements OnInit {
+  @Input() plugboard: Plugboard;
+
+  //Variables
+  firstRow: PlugboardLetter[];
+  secondRow: PlugboardLetter[];
+  thirdRow: PlugboardLetter[];
+
+  ngOnInit(): void {
+    this.firstRow = this.plugboard.plugboardLetters.slice(0,9);
+    this.secondRow = this.plugboard.plugboardLetters.slice(9,17);
+    this.thirdRow = this.plugboard.plugboardLetters.slice(17,26);
+  }
+
   keyPairs: PlugboardLetter[] = [];
   letterPairs: LetterPair[] = [];
   allowedPairsNumber: number = 10;

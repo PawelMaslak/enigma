@@ -12,7 +12,7 @@ export class PlugboardLetter {
     ) {
         this.letter = letter;
         this.isPlugged = false;
-        this.pluggedLetter = '';
+        this.pluggedLetter = letter;
         this.letterNumber = EnigmaHelper.getLetterNumberInAlphabet(letter);
     }
 

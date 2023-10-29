@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 
-//To subscribe to it - Enigma machine -> For further processing
 export class KeyEventsService {
   private keyPressSubject = new Subject<string>();
   keyPress$ = this.keyPressSubject.asObservable();
