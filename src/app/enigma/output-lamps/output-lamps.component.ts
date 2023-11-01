@@ -16,7 +16,7 @@ export class OutputLampsComponent implements OnInit {
   thirdRow: string[] = EnigmaHelper.getThirdRowQwertzKeyboardLayout();
   
   ngOnInit(): void {
-    this.keyEventsService.keyPress$.subscribe(key => {
+    this.keyEventsService.keyProcessed$.subscribe(key => {
       // Process the key press event here, e.g., call a method
       this.processKeyPress(key);
     });

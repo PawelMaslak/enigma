@@ -1,4 +1,4 @@
-<div class="rotor-section d-flex pb-3" *ngIf="!ringSettingsVisible">
+<div class="rotor-section d-flex" *ngIf="!ringSettingsVisible">
     <div class="window">
         <span class="current-rotor-value">
             {{this.rotor.entryLetters[0]}}
@@ -10,7 +10,7 @@
         <div class="character previous-character" (click)="step(-1)">{{this.rotor.entryLetters[25]}}</div>
     </div>
 </div>
-<div class="rotor-section d-flex pb-3" *ngIf="ringSettingsVisible">
+<div class="rotor-section d-flex" *ngIf="ringSettingsVisible">
     <div class="window">
         <span class="current-rotor-value">
             {{this.rotor.ringSettingNumbersArray[0]}}

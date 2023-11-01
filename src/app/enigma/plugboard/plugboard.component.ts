@@ -17,18 +17,21 @@ export class PlugboardComponent implements OnInit {
   firstRow: PlugboardLetter[];
   secondRow: PlugboardLetter[];
   thirdRow: PlugboardLetter[];
+  colours: string[];
+  allowedPairsNumber: number;
+  letterPairs: LetterPair[];
 
   ngOnInit(): void {
     this.firstRow = this.plugboard.plugboardLetters.slice(0,9);
     this.secondRow = this.plugboard.plugboardLetters.slice(9,17);
     this.thirdRow = this.plugboard.plugboardLetters.slice(17,26);
+    this.colours = this.plugboard.pairColours;
+    this.allowedPairsNumber = this.plugboard.allowedPairsNumber;
+    this.letterPairs = this.plugboard.letterPairs;
   }
 
   keyPairs: PlugboardLetter[] = [];
-  letterPairs: LetterPair[] = [];
-  allowedPairsNumber: number = 10;
-  colours: string[] = EnigmaHelper.getColourList();
-
+  
   public getLetterPairString(index: number): string {
     return `${this.letterPairs[index].letterPair}`;
   }

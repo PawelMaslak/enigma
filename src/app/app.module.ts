@@ -11,6 +11,7 @@ import { InputKeyboardComponent } from './enigma/input-keyboard/input-keyboard.c
 import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
 import { TopMenuComponent } from './support/top-menu/top-menu.component';
 import { FooterComponent } from './support/footer/footer.component';
+import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './support/footer/footer.component';
     InputKeyboardComponent,
     PlugboardComponent,
     TopMenuComponent,
-    FooterComponent
+    FooterComponent,
+    RotorSectionComponent
   ],
   imports: [
     BrowserModule,

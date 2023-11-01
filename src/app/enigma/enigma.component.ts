@@ -5,6 +5,7 @@ import { KeyEventsService } from '../services/key-events.service';
 import { RotorSection } from '../models/rotor-section';
 import { Reflector } from '../models/reflector';
 import { Plugboard } from '../models/plugboard';
+import EnigmaHelper from '../helpers/enigma-helper';
 
 @Component({
   selector: 'app-enigma',
@@ -18,23 +19,11 @@ export class EnigmaComponent {
   rotors: Rotor[];
   reflectors: Reflector[];
 
-
-  rotorOne: Rotor;
-  rotorTwo: Rotor;
-  rotorThree: Rotor;
-
   constructor(
     dataService: DataService,
     private keyEventsService: KeyEventsService) {
     this.setUpData(dataService);
     this.initialiseMachineComponents();
-
-
-
-
-    this.rotorOne = this.rotors[0];
-    this.rotorTwo = this.rotors[1];
-    this.rotorThree = this.rotors[2];
   }
 
   ngOnInit(): void {
@@ -53,7 +42,8 @@ export class EnigmaComponent {
 
   //In the future - allow user to manually select components of rotor section
   private createDefaultRotorSection(): RotorSection {
-    return new RotorSection([this.rotorOne, this.rotorTwo, this.rotorThree], this.reflectors[0]);
+    this.rotorSection = new RotorSection([this.rotors[0], this.rotors[1], this.rotors[2]], this.reflectors[0]);
+    return this.rotorSection;
   }
 
   private subscribeToKeyEventsService(): void {
@@ -63,20 +53,35 @@ export class EnigmaComponent {
     });
   }
 
-  public processInput(key: string) {
-    //Capture input
-    //Process input in plugboard
-    //Send signal to ETW
-
-
-    console.log('Stepping the rotor by one:');
-    this.rotorOne.stepRotor(-1);
-    console.log(this.plugboard);
+  public processInput(key: string): void {
+    this.stepRotors();
+    this.processKey(key); //Return string
+    //Emit event!
+    this.keyEventsService.emitProcessedKeyOutput(key);
   }
 
   getCurrentSetting() {
-    console.log(this.rotorOne);
-    console.log(this.rotorTwo);
-    console.log(this.rotorThree);
+    console.log(this.rotorSection);
+    console.log(this.plugboard);
+  }
+
+  private processKey(key: string): void {
+    //Process letter through plugboard
+    const letterPairs = this.plugboard.letterPairs;
+
+    console.log(this.plugboard);
+  }
+
+  private stepRotors(): void {
+    const rotorOne = this.rotorSection.rotors[0];
+    rotorOne.stepRotor(-1);
+    if (rotorOne.currentPositionLetter == rotorOne.turnOverLetter) {
+      const rotorTwo = this.rotorSection.rotors[1];
+      rotorTwo.stepRotor(-1);
+      if (rotorTwo.currentPositionLetter == rotorTwo.turnOverLetter) {
+        const rotorThree = this.rotorSection.rotors[2];
+        rotorThree.stepRotor(-1);
+      }
+    }
   }
 }

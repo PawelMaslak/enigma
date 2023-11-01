@@ -3,7 +3,7 @@ import { LetterPair, PlugboardLetter } from "./plugboardletter";
 
 export class Plugboard {
     plugboardLetters: PlugboardLetter[]
-    letterPairs: LetterPair[]
+    letterPairs: LetterPair[] = [];
     allowedPairsNumber: number = 10;
     pairColours: string[]
 

@@ -33,7 +33,6 @@ export class InputKeyboardComponent {
     if (this.alphabet.includes(keyPressed)) {
       this.pressedKey = keyPressed;
       this.keyEventsService.emitKeyPress(keyPressed);
-      console.log(keyPressed);
       setTimeout(() => {
         this.pressedKey = '';
       }, 200);
