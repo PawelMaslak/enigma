@@ -72,6 +72,22 @@ export class EnigmaComponent {
     console.log(this.plugboard);
   }
 
+  private processInputThroughPlugboard(key: string): string {
+    const matchedPair = this.plugboard.letterPairs.find(
+      pair => pair.letterOne.letter === key || pair.letterTwo.letter === key
+    );
+
+    if (matchedPair) {
+      if (matchedPair.letterOne.letter === key) {
+        return matchedPair.letterTwo.letter;
+      } else {
+        return matchedPair.letterOne.letter;
+      }
+    }
+
+    return key;
+  }
+
   private stepRotors(): void {
     const rotorOne = this.rotorSection.rotors[0];
     rotorOne.stepRotor(-1);
