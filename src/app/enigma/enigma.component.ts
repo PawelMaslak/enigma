@@ -105,15 +105,6 @@ export class EnigmaComponent {
     return rotorOutputCharacter;
   }
 
-  private processReturnCharacterThroughEtw(key: string): string {
-    const firstRotorReturnedLetterIndex = this.rotorSection.rotors[0].entryLetters.indexOf(key);
-    const etwReturnLetter = this.alphabet[firstRotorReturnedLetterIndex];
-
-    console.log(`Processed letter through ETW. Input: ${key}, Output: ${etwReturnLetter}.`);
-
-    return etwReturnLetter;
-  }
-
   private processInputThroughRotors(key: string): string {
     let processingKey = key;
 
@@ -139,6 +130,15 @@ export class EnigmaComponent {
     const plugboardReturnLetterOutput = this.processInputThroughPlugboard(etwOutput);
 
     return plugboardReturnLetterOutput;
+  }
+
+  private processReturnCharacterThroughEtw(key: string): string {
+    const firstRotorReturnedLetterIndex = this.rotorSection.rotors[0].entryLetters.indexOf(key);
+    const etwReturnLetter = this.alphabet[firstRotorReturnedLetterIndex];
+
+    console.log(`Processed letter through ETW. Input: ${key}, Output: ${etwReturnLetter}.`);
+
+    return etwReturnLetter;
   }
 
   private processReturnCharacterThroughRotor(key: string, index: number): string {

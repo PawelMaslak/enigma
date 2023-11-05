@@ -26,7 +26,7 @@ export class Rotor {
     this.ringSettingNumbersArray = EnigmaHelper.getRingSettingsNumberArray();
   }
 
-  stepRingSetting(index: number) {
+  stepRingSetting(index: number): void {
     const alphabetLength = this.entryLetters.length;
     const shiftedRingSettingNumbersArray = new Array(alphabetLength);
     const shiftedInternalWiring = new Array(alphabetLength);
@@ -47,7 +47,7 @@ export class Rotor {
     this.ringSetting = shiftedRingSettingNumbersArray[0];
   }
 
-  public stepRotor(step: number) {
+  public stepRotor(step: number): void {
     const alphabetLength = 26;
     const shiftedEntryCharacters = new Array(alphabetLength);
     const shiftedInternalWiring = new Array(alphabetLength);

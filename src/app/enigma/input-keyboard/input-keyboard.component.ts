@@ -15,8 +15,18 @@ export class InputKeyboardComponent {
   thirdRow: string[] = EnigmaHelper.getThirdRowQwertzKeyboardLayout();
   constructor(private keyEventsService: KeyEventsService) {}
 
+  public keyClicked(letter: string) {
+    this.pressedKey = letter;
+    this.keyEventsService.emitKeyPress(letter);
+    console.log(letter);
+
+    setTimeout(() => {
+      this.pressedKey = '';
+    }, 200);
+  }
+
   @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
+  private handleKeyboardEvent(event: KeyboardEvent): void {
     const keyPressed = event.key.toUpperCase();
     if (this.alphabet.includes(keyPressed)) {
       this.pressedKey = keyPressed;
@@ -25,15 +35,5 @@ export class InputKeyboardComponent {
         this.pressedKey = '';
       }, 200);
     }
-  }
-
-  keyClicked(letter: string) {
-    this.pressedKey = letter;
-    this.keyEventsService.emitKeyPress(letter);
-    console.log(letter);
-
-    setTimeout(() => {
-      this.pressedKey = '';
-    }, 200);
   }
 }

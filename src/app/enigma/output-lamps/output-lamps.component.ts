@@ -21,7 +21,7 @@ export class OutputLampsComponent implements OnInit {
     });
   }
 
-  processKeyPress(key: string) {
+  private processKeyPress(key: string): void {
     this.returnedChar = key;
     console.log(`Key pressed and captured inside lamp-component: ${key}`);
 

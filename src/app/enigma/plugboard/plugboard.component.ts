@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import EnigmaHelper from 'src/app/helpers/enigma-helper';
 import { Plugboard } from 'src/app/models/plugboard';
 import { LetterPair, PlugboardLetter } from 'src/app/models/plugboardletter';
 

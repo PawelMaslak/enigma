@@ -5,17 +5,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class KeyEventsService {
-  keyPress$ = this.keyPressSubject.asObservable();
-  keyProcessed$ = this.keyProcessedSubject.asObservable();
-  private keyPressSubject = new Subject<string>();
+  public keyPressSubject = new Subject<string>();
+  public keyProcessedSubject = new Subject<string>();
+  public keyPress$ = this.keyPressSubject.asObservable();
+  public keyProcessed$ = this.keyProcessedSubject.asObservable();
 
-  private keyProcessedSubject = new Subject<string>();
-
-  emitKeyPress(key: string) {
+  public emitKeyPress(key: string): void {
     this.keyPressSubject.next(key);
   }
 
-  emitProcessedKeyOutput(key: string) {
+  public emitProcessedKeyOutput(key: string): void {
     this.keyProcessedSubject.next(key);
   }
 }

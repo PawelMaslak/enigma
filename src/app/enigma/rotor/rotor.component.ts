@@ -14,7 +14,7 @@ export class RotorComponent {
     this.rotor.stepRotor(i);
   }
 
-  public stepRingSetting(i: number) {
+  public stepRingSetting(i: number): void {
     this.rotor.stepRingSetting(i);
   }
 }
