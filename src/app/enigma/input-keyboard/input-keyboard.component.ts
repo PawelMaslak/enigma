@@ -15,7 +15,7 @@ export class InputKeyboardComponent {
   thirdRow: string[] = EnigmaHelper.getThirdRowQwertzKeyboardLayout();
   constructor(private keyEventsService: KeyEventsService) {}
 
-  public keyClicked(letter: string) {
+  public keyClicked(letter: string): void {
     this.pressedKey = letter;
     this.keyEventsService.emitKeyPress(letter);
     console.log(letter);

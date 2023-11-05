@@ -12,7 +12,7 @@ import EnigmaHelper from '../helpers/enigma-helper';
   templateUrl: './enigma.component.html',
   styleUrls: ['./enigma.component.scss'],
 })
-export class EnigmaComponent {
+export class EnigmaComponent implements OnInit {
   alphabet: string[];
   plugboard: Plugboard;
   reflectors: Reflector[];
