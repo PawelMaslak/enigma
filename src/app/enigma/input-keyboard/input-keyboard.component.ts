@@ -5,27 +5,15 @@ import { KeyEventsService } from 'src/app/services/key-events.service';
 @Component({
   selector: 'app-input-keyboard',
   templateUrl: './input-keyboard.component.html',
-  styleUrls: ['./input-keyboard.component.scss']
+  styleUrls: ['./input-keyboard.component.scss'],
 })
 export class InputKeyboardComponent {
-  constructor(private keyEventsService: KeyEventsService) { }
-
-  pressedKey: string = '';
   alphabet: string[] = EnigmaHelper.getAlphabetArray();
-
   firstRow: string[] = EnigmaHelper.getFirstRowQwertzKeyboardLayout();
+  pressedKey: string = '';
   secondRow: string[] = EnigmaHelper.getSecondRowQwertzKeyboardLayout();
   thirdRow: string[] = EnigmaHelper.getThirdRowQwertzKeyboardLayout();
-
-  keyClicked(letter: string) {
-    this.pressedKey = letter;
-    this.keyEventsService.emitKeyPress(letter);
-    console.log(letter);
-
-    setTimeout(() => {
-      this.pressedKey = '';
-    }, 200);
-  }
+  constructor(private keyEventsService: KeyEventsService) {}
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -37,5 +25,15 @@ export class InputKeyboardComponent {
         this.pressedKey = '';
       }, 200);
     }
+  }
+
+  keyClicked(letter: string) {
+    this.pressedKey = letter;
+    this.keyEventsService.emitKeyPress(letter);
+    console.log(letter);
+
+    setTimeout(() => {
+      this.pressedKey = '';
+    }, 200);
   }
 }

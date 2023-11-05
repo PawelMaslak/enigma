@@ -8,7 +8,7 @@ describe('PlugboardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PlugboardComponent]
+      declarations: [PlugboardComponent],
     });
     fixture = TestBed.createComponent(PlugboardComponent);
     component = fixture.componentInstance;

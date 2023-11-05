@@ -24,13 +24,10 @@ import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.comp
     PlugboardComponent,
     TopMenuComponent,
     FooterComponent,
-    RotorSectionComponent
+    RotorSectionComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

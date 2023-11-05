@@ -8,7 +8,7 @@ describe('RotorSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RotorSectionComponent]
+      declarations: [RotorSectionComponent],
     });
     fixture = TestBed.createComponent(RotorSectionComponent);
     component = fixture.componentInstance;

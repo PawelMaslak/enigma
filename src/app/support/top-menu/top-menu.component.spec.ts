@@ -8,7 +8,7 @@ describe('TopMenuComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TopMenuComponent]
+      declarations: [TopMenuComponent],
     });
     fixture = TestBed.createComponent(TopMenuComponent);
     component = fixture.componentInstance;

@@ -1,98 +1,99 @@
 <div class="container pt-3 pb-5">
-    <div class="plugboard">
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of firstRow"
-                (click)="pairKey(plug)">
-                <div class="letter">{{plug.letter}}</div>
-                <div class="holes">
-                    <span class="top cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                    <span class="bottom cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                </div>
-                <div class="number">{{plug.letterNumber}}</div>
-            </div>
+  <div class="plugboard">
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div
+        class="plug d-flex align-items-center justify-content-center"
+        *ngFor="let plug of firstRow"
+        (click)="pairKey(plug)"
+      >
+        <div class="letter">{{plug.letter}}</div>
+        <div class="holes">
+          <span
+            class="top cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
+          <span
+            class="bottom cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
         </div>
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of secondRow"
-                (click)="pairKey(plug)">
-                <div class="letter">{{plug.letter}}</div>
-                <div class="holes">
-                    <span class="top cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                    <span class="bottom cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                </div>
-                <div class="number">{{plug.letterNumber}}</div>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="plug d-flex align-items-center justify-content-center" *ngFor="let plug of thirdRow"
-                (click)="pairKey(plug)">
-                <div class="letter">{{plug.letter}}</div>
-                <div class="holes">
-                    <span class="top cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                    <span class="bottom cable-hole"
-                        [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"></span>
-                </div>
-                <div class="number">{{plug.letterNumber}}</div>
-            </div>
-        </div>
+        <div class="number">{{plug.letterNumber}}</div>
+      </div>
     </div>
-    <div class="caption pt-3 pb-1">
-        <span class="letter uppercase">Created Letter Pairs:</span>
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div
+        class="plug d-flex align-items-center justify-content-center"
+        *ngFor="let plug of secondRow"
+        (click)="pairKey(plug)"
+      >
+        <div class="letter">{{plug.letter}}</div>
+        <div class="holes">
+          <span
+            class="top cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
+          <span
+            class="bottom cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
+        </div>
+        <div class="number">{{plug.letterNumber}}</div>
+      </div>
     </div>
-    <div class="plugboard-summary d-flex justify-content-center pt-3">
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[0]">
-                {{getLetterPairString(0)}}
-            </span>
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div
+        class="plug d-flex align-items-center justify-content-center"
+        *ngFor="let plug of thirdRow"
+        (click)="pairKey(plug)"
+      >
+        <div class="letter">{{plug.letter}}</div>
+        <div class="holes">
+          <span
+            class="top cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
+          <span
+            class="bottom cable-hole"
+            [ngStyle]="plug.isPlugged ? {'background-color': plug.pairColour} : {'background-color': 'black'}"
+          ></span>
         </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[1]">
-                {{getLetterPairString(1)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[2]">
-                {{getLetterPairString(2)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[3]">
-                {{getLetterPairString(3)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[4]">
-                {{getLetterPairString(4)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[5]">
-                {{getLetterPairString(5)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[6]">
-                {{getLetterPairString(6)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[7]">
-                {{getLetterPairString(7)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[8]">
-                {{getLetterPairString(8)}}
-            </span>
-        </div>
-        <div class="letter-pair">
-            <span class="letter" *ngIf="letterPairs[9]">
-                {{getLetterPairString(9)}}
-            </span>
-        </div>
+        <div class="number">{{plug.letterNumber}}</div>
+      </div>
     </div>
+  </div>
+  <div class="caption pt-3 pb-1">
+    <span class="letter uppercase">Created Letter Pairs:</span>
+  </div>
+  <div class="plugboard-summary d-flex justify-content-center pt-3">
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[0]"> {{getLetterPairString(0)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[1]"> {{getLetterPairString(1)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[2]"> {{getLetterPairString(2)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[3]"> {{getLetterPairString(3)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[4]"> {{getLetterPairString(4)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[5]"> {{getLetterPairString(5)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[6]"> {{getLetterPairString(6)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[7]"> {{getLetterPairString(7)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[8]"> {{getLetterPairString(8)}} </span>
+    </div>
+    <div class="letter-pair">
+      <span class="letter" *ngIf="letterPairs[9]"> {{getLetterPairString(9)}} </span>
+    </div>
+  </div>
 </div>

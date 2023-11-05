@@ -5,18 +5,17 @@ import { KeyEventsService } from 'src/app/services/key-events.service';
 @Component({
   selector: 'app-output-lamps',
   templateUrl: './output-lamps.component.html',
-  styleUrls: ['./output-lamps.component.scss']
+  styleUrls: ['./output-lamps.component.scss'],
 })
 export class OutputLampsComponent implements OnInit {
-  constructor(private keyEventsService: KeyEventsService) { }
-
-  returnedChar: string = '';
   firstRow: string[] = EnigmaHelper.getFirstRowQwertzKeyboardLayout();
+  returnedChar: string = '';
   secondRow: string[] = EnigmaHelper.getSecondRowQwertzKeyboardLayout();
   thirdRow: string[] = EnigmaHelper.getThirdRowQwertzKeyboardLayout();
-  
+  constructor(private keyEventsService: KeyEventsService) {}
+
   ngOnInit(): void {
-    this.keyEventsService.keyProcessed$.subscribe(key => {
+    this.keyEventsService.keyProcessed$.subscribe((key) => {
       // Process the key press event here, e.g., call a method
       this.processKeyPress(key);
     });
@@ -25,7 +24,7 @@ export class OutputLampsComponent implements OnInit {
   processKeyPress(key: string) {
     this.returnedChar = key;
     console.log(`Key pressed and captured inside lamp-component: ${key}`);
-    
+
     setTimeout(() => {
       this.returnedChar = '';
     }, 400);

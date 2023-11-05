@@ -8,7 +8,7 @@ describe('OutputLampsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OutputLampsComponent]
+      declarations: [OutputLampsComponent],
     });
     fixture = TestBed.createComponent(OutputLampsComponent);
     component = fixture.componentInstance;

@@ -4,13 +4,13 @@ import { Rotor } from 'src/app/models/rotor';
 @Component({
   selector: 'app-rotor',
   templateUrl: './rotor.component.html',
-  styleUrls: ['./rotor.component.scss']
+  styleUrls: ['./rotor.component.scss'],
 })
 export class RotorComponent {
-  @Input() rotor: Rotor;
   @Input() ringSettingsVisible: boolean;
+  @Input() rotor: Rotor;
 
-  public step(i: number) : void {
+  public step(i: number): void {
     this.rotor.stepRotor(i);
   }
 

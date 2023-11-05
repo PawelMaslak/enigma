@@ -6,15 +6,15 @@ import { RotorSection } from 'src/app/models/rotor-section';
 @Component({
   selector: 'app-rotor-section',
   templateUrl: './rotor-section.component.html',
-  styleUrls: ['./rotor-section.component.scss']
+  styleUrls: ['./rotor-section.component.scss'],
 })
 export class RotorSectionComponent implements OnInit {
   @Input() rotorSection: RotorSection;
 
-  rotorOne: Rotor;
-  rotorTwo: Rotor;
-  rotorThree: Rotor;
   reflector: Reflector;
+  rotorOne: Rotor;
+  rotorThree: Rotor;
+  rotorTwo: Rotor;
 
   ngOnInit(): void {
     this.rotorOne = this.rotorSection.rotors[0];

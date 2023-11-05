@@ -1,19 +1,19 @@
 <div class="container">
-    <div class="lampboard">
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="lamp-section" *ngFor="let char of firstRow">
-                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="lamp-section" *ngFor="let char of secondRow">
-                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center pt-1">
-            <div class="lamp-section" *ngFor="let char of thirdRow">
-                <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
-            </div>
-        </div>
+  <div class="lampboard">
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div class="lamp-section" *ngFor="let char of firstRow">
+        <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
+      </div>
     </div>
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div class="lamp-section" *ngFor="let char of secondRow">
+        <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center pt-1">
+      <div class="lamp-section" *ngFor="let char of thirdRow">
+        <span class="light" [class.light-on]="returnedChar === char">{{char}}</span>
+      </div>
+    </div>
+  </div>
 </div>
