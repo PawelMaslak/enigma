@@ -12,6 +12,7 @@ export class Rotor {
   ringSetting: number;
 
   ringSettingNumbersArray: number[];
+  ringSettingVisible: boolean;
   turnOverLetter: string;
 
   constructor(id: number, name: string, turnOverLetter: string, internalWiringLetters: string) {

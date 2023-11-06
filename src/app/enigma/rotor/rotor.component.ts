@@ -7,7 +7,6 @@ import { Rotor } from 'src/app/models/rotor';
   styleUrls: ['./rotor.component.scss'],
 })
 export class RotorComponent {
-  @Input() ringSettingsVisible: boolean;
   @Input() rotor: Rotor;
 
   public step(i: number): void {

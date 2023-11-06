@@ -1,20 +1,26 @@
-<div class="container">
-  <div class="row">
-    <app-logo></app-logo>
+<div class="container d-flex">
+  <div class="col-10 enigma">
+    <div class="row">
+      <app-logo></app-logo>
+    </div>
+    <div class="row">
+      <app-rotor-section [rotorSection]="rotorSection"></app-rotor-section>
+    </div>
+    <div class="row">
+      <app-output-lamps></app-output-lamps>
+    </div>
+    <div class="row">
+      <app-input-keyboard></app-input-keyboard>
+    </div>
+    <div class="row">
+      <app-plugboard [plugboard]="plugboard"></app-plugboard>
+    </div>
   </div>
-  <div class="row">
-    <app-rotor-section [rotorSection]="rotorSection"></app-rotor-section>
-  </div>
-  <div class="row">
-    <app-output-lamps></app-output-lamps>
-  </div>
-  <div class="row">
-    <app-input-keyboard></app-input-keyboard>
-  </div>
-  <div class="row">
-    <app-plugboard [plugboard]="plugboard"></app-plugboard>
+  <div class="col-2 control">
+    <app-control-panel [plugboard]="plugboard" [rotorSection]="rotorSection"></app-control-panel>
   </div>
 </div>
+
 <hr />
 <div class="container">
   <div class="row">

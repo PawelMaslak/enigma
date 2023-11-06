@@ -1,0 +1,25 @@
+<div class="button-controls">
+  <button class="btn btn-primary" (click)="toggleRingSettings()">
+    {{this.ringSettingsVisible ? 'Set Rotor Position' : 'Set Ring Settings'}}
+  </button>
+</div>
+<div class="rotor-controls">
+  <div class="input-form" *ngFor="let rotor of rotorSection.rotors">
+    <span>Rotor: {{rotor.name}}</span>
+    <div class="row">
+      <div class="col">Rotor Position Section</div>
+      <div class="col">Ring Setting Dropdown</div>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>

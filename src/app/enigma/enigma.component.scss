@@ -1,5 +1,11 @@
 .container {
-    width: 800px;
-    //background-image: url(../../assets/images/texture.jpg);
-    //background-repeat: no-repeat;
+    width: 1100px;
+
+    .enigma {
+        width: 800px;
+    }    
+    .control {
+        width: 300px;
+    }
 }
+

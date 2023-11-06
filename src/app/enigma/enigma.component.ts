@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data-service';
-import { Rotor } from '../models/rotor';
-import { KeyEventsService } from '../services/key-events.service';
-import { RotorSection } from '../models/rotor-section';
-import { Reflector } from '../models/reflector';
-import { Plugboard } from '../models/plugboard';
 import EnigmaHelper from '../helpers/enigma-helper';
+import { Plugboard } from '../models/plugboard';
+import { Reflector } from '../models/reflector';
+import { Rotor } from '../models/rotor';
+import { RotorSection } from '../models/rotor-section';
+import { DataService } from '../services/data-service';
+import { KeyEventsService } from '../services/key-events.service';
 
 @Component({
   selector: 'app-enigma',

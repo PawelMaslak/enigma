@@ -12,6 +12,7 @@ import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
 import { TopMenuComponent } from './support/top-menu/top-menu.component';
 import { FooterComponent } from './support/footer/footer.component';
 import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.component';
+import { ControlPanelComponent } from './enigma/control-panel/control-panel.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.comp
     TopMenuComponent,
     FooterComponent,
     RotorSectionComponent,
+    ControlPanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
