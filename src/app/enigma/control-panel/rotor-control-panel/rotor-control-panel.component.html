@@ -1,0 +1,25 @@
+<div class="rotor">
+  <div class="rotor-name">
+    <span>Rotor: {{rotor.name}}</span>
+  </div>
+  <div class="dropdown" *ngIf="!rotor.ringSettingVisible">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{rotor.currentPositionLetter}}
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let letter of rotor.alphabetArray">
+        <a class="dropdown-item" (click)="selectLetter(letter)">{{letter}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown" *ngIf="rotor.ringSettingVisible">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{rotor.ringSetting}}
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let ringSetting of rotor.ringSettingNumbersArray">
+        <a class="dropdown-item" (click)="selectRingSetting(ringSetting)">{{ringSetting}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

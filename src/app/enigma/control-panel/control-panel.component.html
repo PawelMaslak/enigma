@@ -3,6 +3,13 @@
     {{this.ringSettingsVisible ? 'Set Rotor Position' : 'Set Ring Settings'}}
   </button>
 </div>
+<div class="rotors d-flex">
+  <div class="rotor" *ngFor="let rotor of rotorSection.rotors">
+    <app-rotor-control-panel [rotor]="rotor"></app-rotor-control-panel>
+  </div>
+</div>
+
+<!-- 
 <div class="rotor-controls">
   <div class="input-form" *ngFor="let rotor of rotorSection.rotors">
     <span>Rotor: {{rotor.name}}</span>
@@ -22,4 +29,4 @@
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
   </ul>
-</div>
+</div> -->

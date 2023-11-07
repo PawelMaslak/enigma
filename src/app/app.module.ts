@@ -3,16 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EnigmaComponent } from './enigma/enigma.component';
-import { LogoComponent } from './enigma/logo/logo.component';
-import { RotorComponent } from './enigma/rotor/rotor.component';
-import { OutputLampsComponent } from './enigma/output-lamps/output-lamps.component';
-import { InputKeyboardComponent } from './enigma/input-keyboard/input-keyboard.component';
-import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
-import { TopMenuComponent } from './support/top-menu/top-menu.component';
-import { FooterComponent } from './support/footer/footer.component';
-import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.component';
 import { ControlPanelComponent } from './enigma/control-panel/control-panel.component';
+import { RotorControlPanelComponent } from './enigma/control-panel/rotor-control-panel/rotor-control-panel.component';
+import { EnigmaComponent } from './enigma/enigma.component';
+import { InputKeyboardComponent } from './enigma/input-keyboard/input-keyboard.component';
+import { LogoComponent } from './enigma/logo/logo.component';
+import { OutputLampsComponent } from './enigma/output-lamps/output-lamps.component';
+import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
+import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.component';
+import { RotorComponent } from './enigma/rotor/rotor.component';
+import { FooterComponent } from './support/footer/footer.component';
+import { TopMenuComponent } from './support/top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ControlPanelComponent } from './enigma/control-panel/control-panel.comp
     FooterComponent,
     RotorSectionComponent,
     ControlPanelComponent,
+    RotorControlPanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
