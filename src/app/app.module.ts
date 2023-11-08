@@ -14,6 +14,7 @@ import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.comp
 import { RotorComponent } from './enigma/rotor/rotor.component';
 import { FooterComponent } from './support/footer/footer.component';
 import { TopMenuComponent } from './support/top-menu/top-menu.component';
+import { CompactEnigmaComponent } from './compact-enigma/compact-enigma.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TopMenuComponent } from './support/top-menu/top-menu.component';
     RotorSectionComponent,
     ControlPanelComponent,
     RotorControlPanelComponent,
+    CompactEnigmaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
