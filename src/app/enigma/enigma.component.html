@@ -1,5 +1,5 @@
 <div class="container d-flex">
-  <div class="col-10 enigma">
+  <div class="enigma">
     <div class="row">
       <app-logo></app-logo>
     </div>
@@ -16,12 +16,12 @@
       <app-plugboard [plugboard]="plugboard"></app-plugboard>
     </div>
   </div>
-  <div class="col-2 control">
+  <!-- <div class="col-2 control">
     <app-control-panel [plugboard]="plugboard" [rotorSection]="rotorSection"></app-control-panel>
-  </div>
+  </div> -->
 </div>
-
 <hr />
+<app-compact-enigma></app-compact-enigma>
 <div class="container">
   <div class="row">
     <button class="btn btn-primary" (click)="getCurrentSetting()">Click me</button>
