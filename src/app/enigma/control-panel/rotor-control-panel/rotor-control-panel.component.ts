@@ -29,13 +29,8 @@ export class RotorControlPanelComponent {
     const indexOfCurrentSetting = this.rotor.ringSettingNumbersArray.indexOf(this.rotor.ringSetting);
     const indexOfSelectedSetting = this.rotor.ringSettingNumbersArray.indexOf(ringSetting);
 
-    console.log(indexOfCurrentSetting);
-    console.log(indexOfSelectedSetting);
-
     let stepsAmount = indexOfSelectedSetting - indexOfCurrentSetting;
     stepsAmount = ((stepsAmount % 26) + 26) % 26;
-
-    console.log(stepsAmount);
 
     this.rotor.stepRingSetting(stepsAmount);
   }
