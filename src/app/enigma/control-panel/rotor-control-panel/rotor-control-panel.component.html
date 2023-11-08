@@ -17,7 +17,7 @@
       {{rotor.ringSetting}}
     </button>
     <ul class="dropdown-menu">
-      <li *ngFor="let ringSetting of rotor.ringSettingNumbersArray">
+      <li *ngFor="let ringSetting of ringSettingsNumbersArray">
         <a class="dropdown-item" (click)="selectRingSetting(ringSetting)">{{ringSetting}}</a>
       </li>
     </ul>

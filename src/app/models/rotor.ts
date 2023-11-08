@@ -28,7 +28,7 @@ export class Rotor {
   }
 
   stepRingSetting(index: number): void {
-    const alphabetLength = this.entryLetters.length;
+    const alphabetLength = 26;
     const shiftedRingSettingNumbersArray = new Array(alphabetLength);
     const shiftedInternalWiring = new Array(alphabetLength);
 
