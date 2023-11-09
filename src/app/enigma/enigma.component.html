@@ -1,14 +1,12 @@
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="toggleEnigmaButton()" class="btn btn-primary toggle-button">
-      {{getEnigmaToggleButtonText()}}
-    </button>
-    <button type="button" class="btn btn-primary toggle-button">Show summary</button>
-    <button type="button" class="btn btn-warning reset-button">Reset</button>
-  </div>
-</div>
-<div class="container d-flex enigma" *ngIf="!compactEnigmaVisible">
+<div class="container d-flex" *ngIf="!compactEnigmaVisible">
   <div class="enigma">
+    <div class="row">
+      <button type="button" (click)="toggleEnigmaButton()" class="btn btn-primary toggle-button">
+        {{getEnigmaToggleButtonText()}}
+      </button>
+      <button type="button" class="btn btn-primary toggle-button">Show summary</button>
+      <button type="button" class="btn btn-warning reset-button">Reset</button>
+    </div>
     <div class="row">
       <app-logo></app-logo>
     </div>
