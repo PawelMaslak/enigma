@@ -5,19 +5,16 @@ html body {
     margin: 0;
     padding: 0;
     //min-height: 100vh;
-    //background-image: url("../images/metal-texture.jpg");
+    background-image: url("../images/old-wood.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: black;
     font-family: "Tahoma";
     color: $devColour;
   
     a {
       text-decoration: none;
       color: $textColour;
-    }
-
-    .container {
-        border: 1px solid red;
     }
   }
 

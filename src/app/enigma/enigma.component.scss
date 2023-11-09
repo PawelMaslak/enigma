@@ -1,3 +1,20 @@
 .container {
     justify-content: center;
+
+    .enigma {
+        border: 2px solid black;
+        box-shadow: 10px 10px 10px #3b3d3c;
+    }
+
+    button {
+        font-size: 10pt;
+        width: 170px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .classic-output {
+        resize: none;
+        width: 500px;
+    }
 }

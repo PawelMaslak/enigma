@@ -14,6 +14,7 @@ import { KeyEventsService } from '../services/key-events.service';
 })
 export class EnigmaComponent implements OnInit {
   alphabet: string[];
+  public compactEnigmaVisible: boolean;
   plugboard: Plugboard;
   reflectors: Reflector[];
   rotors: Rotor[];
@@ -32,6 +33,10 @@ export class EnigmaComponent implements OnInit {
     console.log(this.plugboard);
   }
 
+  public getEnigmaToggleButtonText(): string {
+    return this.compactEnigmaVisible ? 'Show Classic Enigma' : 'Show Compact Enigma';
+  }
+
   ngOnInit(): void {
     this.subscribeToKeyEventsService();
   }
@@ -40,6 +45,10 @@ export class EnigmaComponent implements OnInit {
     this.stepRotors();
     const outputLetter = this.processKey(key); //Return string
     this.keyEventsService.emitProcessedKeyOutput(outputLetter);
+  }
+
+  public toggleEnigmaButton(): void {
+    this.compactEnigmaVisible = !this.compactEnigmaVisible;
   }
 
   //In the future - allow user to manually select components of rotor section
