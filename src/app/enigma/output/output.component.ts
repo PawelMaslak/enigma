@@ -7,20 +7,33 @@ import { KeyEventsService } from 'src/app/services/key-events.service';
   styleUrls: ['./output.component.scss'],
 })
 export class OutputComponent implements OnInit {
+  public inputContent: string = '';
+  public inputLetters: string[] = [];
   public outputContent: string = '';
   public outputLetters: string[] = [];
 
   constructor(private keyEventsService: KeyEventsService) {}
 
   ngOnInit(): void {
-    this.keyEventsService.keyProcessed$.subscribe((key) => {
-      // Process the key press event here, e.g., call a method
-      this.processKey(key);
-    });
+    this.subscribeToKeyEvents();
   }
 
-  private processKey(key: string): void {
-    this.outputLetters.push(key);
-    this.outputContent = this.outputLetters.join('');
+  private processKeyEvent(key: string, action: string): void {
+    if (action === 'input') {
+      this.inputLetters.push(key);
+      this.inputContent = this.inputLetters.join('');
+    } else {
+      this.outputLetters.push(key);
+      this.outputContent = this.outputLetters.join('');
+    }
+  }
+
+  private subscribeToKeyEvents(): void {
+    this.keyEventsService.keyPress$.subscribe((key) => {
+      this.processKeyEvent(key, 'input');
+    });
+    this.keyEventsService.keyProcessed$.subscribe((key) => {
+      this.processKeyEvent(key, 'output');
+    });
   }
 }

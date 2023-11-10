@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .footer-message {
+        color: #E1C16E;
+        user-select: none;
+        font-size: 12pt;
+    }
+
+    .pm-logo {
+        user-select: none;
+        
+        img {
+            margin-top: 10px;
+            width: 50px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .pm-logo:hover {
+        cursor: pointer;
+    }
+}
