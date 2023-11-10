@@ -1,0 +1,29 @@
+.container {
+    background-image: url(../../../assets/images/texture.jpg);
+
+    .control-buttons {
+        display: flex;
+    
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            border: 2px solid #E1C16E;
+            border-radius: 10px;
+            width: 140px;
+            height: 30px;
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: black;
+            background: radial-gradient(circle, rgba(188, 194, 203, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+        }
+    
+        .button:active {
+            box-shadow: 0 5px 5px #3b3d3c;
+            transform: translateY(2px);
+        }
+    }    
+}

@@ -1,11 +1,14 @@
-<div class="container d-flex" *ngIf="!compactEnigmaVisible">
+<div class="container d-flex pt-5 pb-5" *ngIf="!compactEnigmaVisible">
   <div class="enigma">
-    <div class="row">
+    <!-- <div class="row">
       <button type="button" (click)="toggleEnigmaButton()" class="btn btn-primary toggle-button">
         {{getEnigmaToggleButtonText()}}
       </button>
       <button type="button" class="btn btn-primary toggle-button">Show summary</button>
       <button type="button" class="btn btn-warning reset-button">Reset</button>
+    </div> -->
+    <div class="row">
+      <app-control-panel [rotorSection]="rotorSection" [plugboard]="plugboard"></app-control-panel>
     </div>
     <div class="row">
       <app-logo></app-logo>
@@ -25,19 +28,5 @@
     <div class="row">
       <app-output></app-output>
     </div>
-  </div>
-  <!-- <div class="col-2 control">
-    <app-control-panel [plugboard]="plugboard" [rotorSection]="rotorSection"></app-control-panel>
-  </div> -->
-</div>
-<hr />
-<app-compact-enigma
-  *ngIf="compactEnigmaVisible"
-  [rotorSection]="rotorSection"
-  [plugboard]="plugboard"
-></app-compact-enigma>
-<div class="container">
-  <div class="row">
-    <button class="btn btn-primary" (click)="getCurrentSetting()">Click me</button>
   </div>
 </div>
