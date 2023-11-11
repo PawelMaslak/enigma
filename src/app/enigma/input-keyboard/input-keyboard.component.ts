@@ -27,9 +27,12 @@ export class InputKeyboardComponent {
 
   @HostListener('document:keydown', ['$event'])
   private handleKeyboardEvent(event: KeyboardEvent): void {
-    const keyPressed = event.key.toUpperCase();
-    if (this.alphabet.includes(keyPressed)) {
+    const isModifierKey = event.ctrlKey || event.metaKey || event.altKey;
+
+    if (!isModifierKey && /^[a-zA-Z]$/.test(event.key)) {
+      const keyPressed = event.key.toUpperCase();
       this.pressedKey = keyPressed;
+
       this.keyEventsService.emitKeyPress(keyPressed);
       setTimeout(() => {
         this.pressedKey = '';

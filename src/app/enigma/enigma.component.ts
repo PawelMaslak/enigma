@@ -62,6 +62,15 @@ export class EnigmaComponent implements OnInit {
     this.rotorSection = this.createDefaultRotorSection();
   }
 
+  private isToBeTurnedOver(rotor: Rotor): boolean {
+    const turnOverLetterIndex = rotor.alphabetArray.indexOf(rotor.turnOverLetter) + 1;
+    const currentLetter = rotor.alphabetArray.indexOf(rotor.currentPositionLetter);
+
+    console.log(`Current letter index: ${currentLetter}. Turnover index: ${turnOverLetterIndex}`);
+
+    return turnOverLetterIndex === currentLetter;
+  }
+
   private processCharacterThroughUkw(key: string, index: number): string {
     const thirdRotorOutputLetterIndex = this.rotorSection.rotors[index].entryLetters.indexOf(key);
 
@@ -180,10 +189,10 @@ export class EnigmaComponent implements OnInit {
   private stepRotors(): void {
     const rotorOne = this.rotorSection.rotors[0];
     rotorOne.stepRotor(-1);
-    if (rotorOne.currentPositionLetter == rotorOne.turnOverLetter) {
+    if (this.isToBeTurnedOver(rotorOne)) {
       const rotorTwo = this.rotorSection.rotors[1];
       rotorTwo.stepRotor(-1);
-      if (rotorTwo.currentPositionLetter == rotorTwo.turnOverLetter) {
+      if (this.isToBeTurnedOver(rotorTwo)) {
         const rotorThree = this.rotorSection.rotors[2];
         rotorThree.stepRotor(-1);
       }

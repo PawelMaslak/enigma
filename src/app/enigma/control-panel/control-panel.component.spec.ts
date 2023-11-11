@@ -8,7 +8,7 @@ describe('ControlPanelComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ControlPanelComponent]
+      declarations: [ControlPanelComponent],
     });
     fixture = TestBed.createComponent(ControlPanelComponent);
     component = fixture.componentInstance;

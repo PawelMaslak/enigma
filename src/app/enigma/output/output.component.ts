@@ -14,8 +14,18 @@ export class OutputComponent implements OnInit {
 
   constructor(private keyEventsService: KeyEventsService) {}
 
+  public async copyOutput(): Promise<void> {
+    await navigator.clipboard.writeText(this.outputContent);
+    alert('Output copied to clipboard!');
+  }
+
   ngOnInit(): void {
     this.subscribeToKeyEvents();
+  }
+
+  private getArrayLengthWithoutWhiteSpaces(array: string[]): number {
+    const arrayWithoutSpaces = array.filter((key) => key !== ' ');
+    return arrayWithoutSpaces.length;
   }
 
   private processKeyEvent(key: string, action: string): void {
@@ -24,6 +34,10 @@ export class OutputComponent implements OnInit {
       this.inputContent = this.inputLetters.join('');
     } else {
       this.outputLetters.push(key);
+      const length = this.getArrayLengthWithoutWhiteSpaces(this.outputLetters);
+      if (length % 5 == 0) {
+        this.outputLetters.push(' ');
+      }
       this.outputContent = this.outputLetters.join('');
     }
   }
