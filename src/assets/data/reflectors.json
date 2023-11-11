@@ -1,14 +1,17 @@
 [
     {
         "Name": "UKW-A",
+        "Guid": "6946A754-C538-4D32-9721-60AFBC396B2A",
         "Letters": "EJMZALYXVBWFCRQUONTSPIKHGD"
     },
     {
         "Name": "UKW-B",
+        "Guid": "CF0FA05F-EFE0-4A15-B5E5-D4D39845524C",
         "Letters": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
     },
     {
         "Name": "UKW-C",
+        "Guid": "5D472FF2-5605-4791-99C9-2C1A9BA27F46",
         "Letters": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
     }
 ]

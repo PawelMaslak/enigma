@@ -1,30 +1,35 @@
 [
     {
         "Name": "I",
+        "Guid": "C0C4F274-017E-4C19-816D-60879013688A",
         "Letters": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
         "NotchLetter": "Y",
         "TurnOverLetter": "Q"
     },
     {
         "Name": "II",
+        "Guid": "9402DF59-B269-4180-9547-37A45CC24694",
         "Letters": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
         "NotchLetter": "M",
         "TurnOverLetter": "E"
     },
     {
         "Name": "III",
+        "Guid": "5B95A8A7-70F0-4BEC-8B6D-214B8BD79663",
         "Letters": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
         "NotchLetter": "D",
         "TurnOverLetter": "V"
     },
     {
         "Name": "IV",
+        "Guid": "B9AE9FB7-E5B9-4B7D-9EB8-889AE80AAA38",
         "Letters": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
         "NotchLetter": "R",
         "TurnOverLetter": "J"
     },
     {
         "Name": "V",
+        "Guid": "CA8F3E39-BC32-4DAC-BFE1-628BFE7FA696",
         "Letters": "VZBRGITYUPSDNHLXAWMJQOFECK",
         "NotchLetter": "H",
         "TurnOverLetter": "Z"

@@ -4,6 +4,7 @@ export class Rotor {
   alphabetArray: string[];
   currentPositionLetter: string;
   entryLetters: string[];
+  guid: string;
   id: number;
 
   internalWiringLetters: string[];
@@ -13,11 +14,13 @@ export class Rotor {
 
   ringSettingNumbersArray: number[];
   ringSettingVisible: boolean;
+
   turnOverLetter: string;
 
-  constructor(id: number, name: string, turnOverLetter: string, internalWiringLetters: string) {
+  constructor(id: number, name: string, turnOverLetter: string, internalWiringLetters: string, guid: string) {
     this.id = id;
     this.name = name;
+    this.guid = guid;
     this.ringSetting = 1;
     this.currentPositionLetter = 'A';
     this.turnOverLetter = turnOverLetter;
