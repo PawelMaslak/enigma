@@ -15,8 +15,10 @@ export class OutputComponent implements OnInit {
   constructor(private keyEventsService: KeyEventsService) {}
 
   public async copyOutput(): Promise<void> {
-    await navigator.clipboard.writeText(this.outputContent);
-    alert('Output copied to clipboard!');
+    if (this.outputContent.length > 0) {
+      await navigator.clipboard.writeText(this.outputContent);
+      alert('Output copied to clipboard!');
+    }
   }
 
   ngOnInit(): void {
