@@ -1,6 +1,10 @@
 .container {
     justify-content: center;
 
+    .row {
+        width: 800px;
+    }
+
     .enigma {
         border: 2px solid black;
         box-shadow: 10px 10px 10px #3b3d3c;

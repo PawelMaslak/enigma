@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import EnigmaHelper from '../helpers/enigma-helper';
+import { MachineConfig } from '../models/machine-config';
 import { Plugboard } from '../models/plugboard';
 import { Reflector } from '../models/reflector';
 import { Rotor } from '../models/rotor';
@@ -15,10 +16,12 @@ import { KeyEventsService } from '../services/key-events.service';
 export class EnigmaComponent implements OnInit {
   alphabet: string[];
   public compactEnigmaVisible: boolean;
+  machineConfig: MachineConfig;
   plugboard: Plugboard;
   reflectors: Reflector[];
   rotors: Rotor[];
   rotorSection: RotorSection;
+  showPlugboard: boolean = false;
 
   constructor(
     dataService: DataService,
@@ -26,6 +29,7 @@ export class EnigmaComponent implements OnInit {
   ) {
     this.setUpData(dataService);
     this.initialiseMachineComponents();
+    this.showPlugboard = false;
   }
 
   public getCurrentSetting(): void {
@@ -58,8 +62,9 @@ export class EnigmaComponent implements OnInit {
   }
 
   private initialiseMachineComponents(): void {
-    this.plugboard = new Plugboard();
-    this.rotorSection = this.createDefaultRotorSection();
+    this.machineConfig = new MachineConfig(this.createDefaultRotorSection(), new Plugboard());
+    this.plugboard = this.machineConfig.plugboard;
+    this.rotorSection = this.machineConfig.rotorSection;
   }
 
   private isToBeTurnedOver(rotor: Rotor): boolean {

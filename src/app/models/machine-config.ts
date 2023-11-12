@@ -1,13 +1,12 @@
 import { Plugboard } from './plugboard';
 import { RotorSection } from './rotor-section';
-import { RotorSectionDto } from './rotor-section-dto';
 
-export class LocalMemoryEntry {
+export class MachineConfig {
   plugboard: Plugboard;
-  rotorSection: RotorSectionDto;
+  rotorSection: RotorSection;
 
   constructor(rotorSection: RotorSection, plugboard: Plugboard) {
-    this.rotorSection = new RotorSectionDto(rotorSection);
+    this.rotorSection = rotorSection;
     this.plugboard = plugboard;
   }
 }

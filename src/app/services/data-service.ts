@@ -8,8 +8,16 @@ import { Rotor } from '../models/rotor';
   providedIn: 'root',
 })
 export class DataService {
+  public GetReflectorByGuid(guid: string): Reflector {
+    return this.GetReflectorCollection().find((reflector) => reflector.guid === guid);
+  }
+
   public GetReflectorCollection(): Reflector[] {
     return reflectorJson.map((reflector) => new Reflector(reflector.Name, reflector.Letters, reflector.Guid));
+  }
+
+  public GetRotorByGuid(guid: string): Rotor {
+    return this.GetRotorCollection().find((rotor) => rotor.guid === guid);
   }
 
   public GetRotorCollection(): Rotor[] {
