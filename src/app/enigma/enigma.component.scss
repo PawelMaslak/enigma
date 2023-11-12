@@ -46,8 +46,27 @@
         user-select: none;
         font-weight: bold;
     }
+
+    .button-dev {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        border: 2px solid #E1C16E;
+        border-radius: 10px;
+        width: 140px;
+        height: 30px;
+        font-size: 9pt;
+        text-transform: uppercase;
+        color: black;
+        background-color: red;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+        user-select: none;
+        font-weight: bold;
+    }
     
-    .button:active {
+    .button:active, .button-dev:active {
         box-shadow: 0 5px 5px #3b3d3c;
         transform: translateY(2px);
     }
