@@ -4,7 +4,7 @@
   </div>
   <div class="rotor">
     <div class="character next-character" (click)="step(1)">{{this.rotor.entryLetters[1]}}</div>
-    <div class="character focus-character">{{this.rotor.entryLetters[0]}}</div>
+    <div class="character focus-character">{{this.rotor.currentPositionLetter}}</div>
     <div class="character previous-character" (click)="step(-1)">{{this.rotor.entryLetters[25]}}</div>
   </div>
 </div>
@@ -14,7 +14,7 @@
   </div>
   <div class="rotor">
     <div class="character next-character" (click)="stepRingSetting(-1)">{{this.rotor.ringSettingNumbersArray[25]}}</div>
-    <div class="character focus-character">{{this.rotor.ringSettingNumbersArray[0]}}</div>
+    <div class="character focus-character">{{this.rotor.ringSetting}}</div>
     <div class="character previous-character" (click)="stepRingSetting(1)">
       {{this.rotor.ringSettingNumbersArray[1]}}
     </div>

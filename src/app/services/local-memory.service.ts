@@ -5,19 +5,39 @@ import { Rotor } from '../models/rotor';
 import { RotorDto } from '../models/rotor-dto';
 import { RotorSection } from '../models/rotor-section';
 import { DataService } from './data-service';
+import { PlugboardService } from './plugboard-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalMemoryService {
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private plugboardService: PlugboardService,
+  ) {}
 
   public createLocalMemoryEntry(rotorSection: RotorSection, plugboard: Plugboard): LocalMemoryEntry {
     return new LocalMemoryEntry(rotorSection, plugboard);
   }
 
   public getPlugboardConfigurationFromLocalMemory(retrievedSettings: LocalMemoryEntry): Plugboard {
-    return retrievedSettings.plugboard;
+    const retrievedPlugboard = retrievedSettings.plugboard;
+
+    const plugboard = new Plugboard();
+    this.plugboardService.initPlugboard(plugboard);
+
+    retrievedPlugboard.letterPairs.forEach((pair) => {
+      //Get retrieved letters from each pair:
+      const letterOneValue = pair.letterOne.letter;
+      const letterTwoValue = pair.letterTwo.letter;
+      //Mark these letters as plugged in mapped plugboard:
+      const newPlugboardLetterOne = plugboard.plugboardLetters.find((letter) => letter.letter == letterOneValue);
+      const newPlugboardLetterTwo = plugboard.plugboardLetters.find((letter) => letter.letter == letterTwoValue);
+      //Create Pairs:
+      this.plugboardService.processKeySelect(newPlugboardLetterOne);
+      this.plugboardService.processKeySelect(newPlugboardLetterTwo);
+    });
+    return plugboard;
   }
 
   public getRotorsConfigurationFromLocalMemory(retrievedSettings: LocalMemoryEntry): RotorSection {

@@ -72,10 +72,7 @@ export class ControlPanelComponent {
     if (retrievedRotorConfig == null && retrievedPlugboardConfig) {
       return false;
     } else {
-      this.rotorSection.reflector = retrievedRotorConfig.reflector;
-      this.rotorSection.rotors.forEach((rotor, index) => {
-        this.localMemoryService.updateRotor(retrievedRotorConfig.rotors[index], rotor);
-      });
+      this.rotorSection = retrievedRotorConfig;
 
       //this.processRetrievedPlugboardConfig(retrievedPlugboardConfig);
 

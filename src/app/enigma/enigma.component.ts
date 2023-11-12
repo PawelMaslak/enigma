@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import EnigmaHelper from '../helpers/enigma-helper';
+import { LocalMemoryEntry } from '../models/local-memory-entry';
 import { MachineConfig } from '../models/machine-config';
 import { Plugboard } from '../models/plugboard';
 import { Reflector } from '../models/reflector';
@@ -7,6 +8,7 @@ import { Rotor } from '../models/rotor';
 import { RotorSection } from '../models/rotor-section';
 import { DataService } from '../services/data-service';
 import { KeyEventsService } from '../services/key-events.service';
+import { LocalMemoryService } from '../services/local-memory.service';
 
 @Component({
   selector: 'app-enigma',
@@ -17,19 +19,23 @@ export class EnigmaComponent implements OnInit {
   alphabet: string[];
   public compactEnigmaVisible: boolean;
   machineConfig: MachineConfig;
+  machineConfigurationAvailable: boolean;
   plugboard: Plugboard;
   reflectors: Reflector[];
+  ringSettingsVisible: boolean;
   rotors: Rotor[];
   rotorSection: RotorSection;
-  showPlugboard: boolean = false;
 
   constructor(
     dataService: DataService,
     private keyEventsService: KeyEventsService,
+    private localMemoryService: LocalMemoryService,
   ) {
     this.setUpData(dataService);
     this.initialiseMachineComponents();
-    this.showPlugboard = false;
+    localStorage.getItem('configuration') != null
+      ? (this.machineConfigurationAvailable = true)
+      : (this.machineConfigurationAvailable = false);
   }
 
   public getCurrentSetting(): void {
@@ -39,6 +45,23 @@ export class EnigmaComponent implements OnInit {
 
   public getEnigmaToggleButtonText(): string {
     return this.compactEnigmaVisible ? 'Show Classic Enigma' : 'Show Compact Enigma';
+  }
+
+  public getRingSettingsText(): string {
+    return this.ringSettingsVisible ? 'Set Rotor Position' : 'Set Ring Settings';
+  }
+
+  public getSettings(): void {
+    console.log(this.rotorSection);
+    console.log(this.plugboard);
+  }
+
+  public loadMachineSettings(): void {
+    const parsedConfiguration = JSON.parse(localStorage.getItem('configuration'));
+    const configurationLoaded = this.updateConfiguration(parsedConfiguration);
+    configurationLoaded
+      ? console.log('Settings loaded')
+      : console.log('Could not load the saved settings. Using default settings');
   }
 
   ngOnInit(): void {
@@ -51,8 +74,36 @@ export class EnigmaComponent implements OnInit {
     this.keyEventsService.emitProcessedKeyOutput(outputLetter);
   }
 
+  public saveMachineSettings(): void {
+    const localMemoryObject = this.localMemoryService.createLocalMemoryEntry(this.rotorSection, this.plugboard);
+    localStorage.setItem('configuration', JSON.stringify(localMemoryObject));
+    this.machineConfigurationAvailable = true;
+    console.log('Settings saved');
+  }
+
   public toggleEnigmaButton(): void {
     this.compactEnigmaVisible = !this.compactEnigmaVisible;
+  }
+
+  public toggleRingSettings(): void {
+    this.ringSettingsVisible = !this.ringSettingsVisible;
+
+    this.rotorSection.rotors.forEach((rotor) => {
+      rotor.ringSettingVisible = this.ringSettingsVisible;
+    });
+  }
+
+  public updateConfiguration(parsedConfiguration: LocalMemoryEntry): boolean {
+    const retrievedRotorConfig = this.mapSavedRotorConfiguration(parsedConfiguration);
+    const retrievedPlugboardConfig = this.mapSavedPlugboardConfiguration(parsedConfiguration);
+
+    if (retrievedRotorConfig == null && retrievedPlugboardConfig) {
+      return false;
+    } else {
+      this.rotorSection = retrievedRotorConfig;
+      this.plugboard = retrievedPlugboardConfig;
+      return true;
+    }
   }
 
   //In the future - allow user to manually select components of rotor section
@@ -74,6 +125,14 @@ export class EnigmaComponent implements OnInit {
     console.log(`Current letter index: ${currentLetter}. Turnover index: ${turnOverLetterIndex}`);
 
     return turnOverLetterIndex === currentLetter;
+  }
+
+  private mapSavedPlugboardConfiguration(parsedConfiguration: LocalMemoryEntry): Plugboard {
+    return this.localMemoryService.getPlugboardConfigurationFromLocalMemory(parsedConfiguration);
+  }
+
+  private mapSavedRotorConfiguration(parsedConfiguration: LocalMemoryEntry): RotorSection {
+    return this.localMemoryService.getRotorsConfigurationFromLocalMemory(parsedConfiguration);
   }
 
   private processCharacterThroughUkw(key: string, index: number): string {

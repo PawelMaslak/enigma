@@ -9,6 +9,10 @@ import { Rotor } from 'src/app/models/rotor';
 export class RotorComponent {
   @Input() rotor: Rotor;
 
+  public getInfo(): void {
+    console.log(this.rotor);
+  }
+
   public step(i: number): void {
     this.rotor.stepRotor(i);
   }
