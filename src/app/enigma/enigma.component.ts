@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import EnigmaHelper from '../helpers/enigma-helper';
 import { LocalMemoryEntry } from '../models/local-memory-entry';
 import { MachineConfig } from '../models/machine-config';
@@ -30,6 +31,7 @@ export class EnigmaComponent implements OnInit {
     dataService: DataService,
     private keyEventsService: KeyEventsService,
     private localMemoryService: LocalMemoryService,
+    private toastr: ToastrService,
   ) {
     this.setUpData(dataService);
     this.initialiseMachineComponents();
@@ -54,6 +56,7 @@ export class EnigmaComponent implements OnInit {
   public getSettings(): void {
     console.log(this.rotorSection);
     console.log(this.plugboard);
+    this.toastr.success('Sukces ryje!', 'Suckes', { timeOut: 2000 });
   }
 
   public loadMachineSettings(): void {

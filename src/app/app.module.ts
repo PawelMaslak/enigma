@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ControlPanelComponent } from './enigma/control-panel/control-panel.component';
@@ -34,7 +35,7 @@ import { TopMenuComponent } from './support/top-menu/top-menu.component';
     OptionsComponent,
     OutputComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ToastrModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
 })

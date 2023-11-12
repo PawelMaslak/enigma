@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/index.scss"
+              "src/assets/styles/index.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
