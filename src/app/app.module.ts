@@ -14,6 +14,7 @@ import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.comp
 import { RotorComponent } from './enigma/rotor/rotor.component';
 import { FooterComponent } from './support/footer/footer.component';
 import { TopMenuComponent } from './support/top-menu/top-menu.component';
+import { WikiComponent } from './support/wiki/wiki.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TopMenuComponent } from './support/top-menu/top-menu.component';
     FooterComponent,
     RotorSectionComponent,
     OutputComponent,
+    WikiComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ToastrModule.forRoot()],
   providers: [],

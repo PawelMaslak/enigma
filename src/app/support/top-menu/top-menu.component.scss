@@ -1,0 +1,53 @@
+.top-menu {
+    background-image: url(../../../assets/images/DarkGrunge_Textures05.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container {
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .menu-section {
+            display: flex;
+            justify-content: center;
+
+            .menu-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                border: 2px solid #E1C16E;
+                border-radius: 10px;
+                width: 135px;
+                height: 30px;
+                font-size: 8pt;
+                text-transform: uppercase;
+                color: black;
+                background: radial-gradient(circle, rgba(188, 194, 203, 1) 0%, rgba(255, 255, 255, 1) 100%);
+                cursor: pointer;
+                transition: all .1s ease-in-out;
+                user-select: none;
+                font-weight: bold;
+            }
+
+            .menu-item:active {
+                box-shadow: 0 5px 5px #3b3d3c;
+                transform: translateY(2px);
+            }
+
+            .pm-logo {
+                user-select: none;
+                
+                img {
+                    margin-top: 5px;
+                    width: 55px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
