@@ -1,10 +1,10 @@
 <div class="container d-flex flex-column pt-2 pb-2">
   <div class="labels d-flex justify-content-around">
-    <span class="label">Input</span>
+    <span class="label">Input message</span>
     <span class="label">Encoded message</span>
   </div>
-  <div class="textareas d-flex">
-    <span class="input">{{inputContent}}</span>
-    <span class="output" (click)="copyOutput()">{{outputContent}}</span>
+  <div class="textareas d-flex pb-2">
+    <textarea class="input-area" rows="5" readonly>{{inputContent}}</textarea>
+    <textarea class="output-area" rows="5" readonly (click)="copyOutput()">{{outputContent}}</textarea>
   </div>
 </div>

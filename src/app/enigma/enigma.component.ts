@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import EnigmaHelper from '../helpers/enigma-helper';
 import { LocalMemoryEntry } from '../models/local-memory-entry';
@@ -16,9 +16,8 @@ import { LocalMemoryService } from '../services/local-memory.service';
   templateUrl: './enigma.component.html',
   styleUrls: ['./enigma.component.scss'],
 })
-export class EnigmaComponent implements OnInit {
+export class EnigmaComponent implements OnInit, OnChanges {
   alphabet: string[];
-  public compactEnigmaVisible: boolean;
   machineConfig: MachineConfig;
   machineConfigurationAvailable: boolean;
   plugboard: Plugboard;
@@ -45,10 +44,6 @@ export class EnigmaComponent implements OnInit {
     console.log(this.plugboard);
   }
 
-  public getEnigmaToggleButtonText(): string {
-    return this.compactEnigmaVisible ? 'Show Classic Enigma' : 'Show Compact Enigma';
-  }
-
   public getRingSettingsText(): string {
     return this.ringSettingsVisible ? 'Set Rotor Position' : 'Set Ring Settings';
   }
@@ -67,6 +62,10 @@ export class EnigmaComponent implements OnInit {
       : console.log('Could not load the saved settings. Using default settings');
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Inside enigma component: ', changes);
+  }
+
   ngOnInit(): void {
     this.subscribeToKeyEventsService();
   }
@@ -77,15 +76,15 @@ export class EnigmaComponent implements OnInit {
     this.keyEventsService.emitProcessedKeyOutput(outputLetter);
   }
 
+  public resetSettings(): void {
+    console.log('Settings reset');
+  }
+
   public saveMachineSettings(): void {
     const localMemoryObject = this.localMemoryService.createLocalMemoryEntry(this.rotorSection, this.plugboard);
     localStorage.setItem('configuration', JSON.stringify(localMemoryObject));
     this.machineConfigurationAvailable = true;
     console.log('Settings saved');
-  }
-
-  public toggleEnigmaButton(): void {
-    this.compactEnigmaVisible = !this.compactEnigmaVisible;
   }
 
   public toggleRingSettings(): void {

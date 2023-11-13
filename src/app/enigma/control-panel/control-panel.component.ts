@@ -42,10 +42,7 @@ export class ControlPanelComponent {
   }
 
   public resetSettings(): void {
-    //Calculate steps
-    //Calculate ring settings
-    //Remove all encoded text
-    //Remove plugs
+    //Remov
   }
 
   public saveMachineSettings(): void {

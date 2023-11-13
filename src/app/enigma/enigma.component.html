@@ -1,4 +1,4 @@
-<div class="container d-flex pt-5 pb-5">
+<!-- <div class="container d-flex pt-5 pb-5">
   <div class="enigma">
     <div class="control-panel">
       <div class="control-buttons">
@@ -26,5 +26,26 @@
     <div class="row">
       <app-output></app-output>
     </div>
+  </div>
+</div> -->
+
+<div class="container wrapper pt-5 pb-5">
+  <div class="enigma">
+    <div class="section-content">
+      <div class="control-buttons">
+        <span class="button" (click)="toggleRingSettings()">{{getRingSettingsText()}}</span>
+        <span class="button" (click)="saveMachineSettings()">Save Settings</span>
+        <span class="button" *ngIf="machineConfigurationAvailable" (click)="loadMachineSettings()">Load Settings</span>
+        <span class="button-dev" (click)="getSettings()">DEV - Settings</span>
+      </div>
+    </div>
+    <div class="section-content"><app-logo></app-logo></div>
+    <div class="section-content">
+      <app-rotor-section [rotorSection]="rotorSection"></app-rotor-section>
+    </div>
+    <div class="section-content"><app-output-lamps></app-output-lamps></div>
+    <div class="section-content"><app-input-keyboard></app-input-keyboard></div>
+    <div class="section-content"><app-plugboard [plugboard]="plugboard"></app-plugboard></div>
+    <div class="section-content"><app-output></app-output></div>
   </div>
 </div>

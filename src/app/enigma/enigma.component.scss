@@ -1,31 +1,8 @@
-.container {
-    justify-content: center;
-
-    .row {
-        width: 800px;
-    }
-
-    .enigma {
-        border: 2px solid black;
-        box-shadow: 10px 10px 10px #3b3d3c;
-    }
-
-    button {
-        font-size: 10pt;
-        width: 170px;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-
-    .classic-output {
-        resize: none;
-        width: 500px;
-    }
-}
-
-
 .control-buttons {
     display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
     background-image: url(../../assets/images/texture.jpg);
     
     .button {
@@ -35,9 +12,9 @@
         margin: 10px;
         border: 2px solid #E1C16E;
         border-radius: 10px;
-        width: 140px;
+        width: 135px;
         height: 30px;
-        font-size: 9pt;
+        font-size: 8pt;
         text-transform: uppercase;
         color: black;
         background: radial-gradient(circle, rgba(188, 194, 203, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -71,3 +48,23 @@
         transform: translateY(2px);
     }
 }    
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .enigma {
+        border: 2px solid black;
+        box-shadow: 10px 10px 10px #3b3d3c;
+    }
+
+    .section-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 800px;
+        background-image: url(../../assets/images/texture.jpg);
+    }
+}
