@@ -5,6 +5,16 @@
   </div>
   <div class="textareas d-flex pb-2">
     <textarea class="input-area" rows="5" readonly>{{inputContent}}</textarea>
-    <textarea class="output-area" rows="5" readonly (click)="copyOutput()">{{outputContent}}</textarea>
+    <textarea
+      class="output-area"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Click the area to copy encoded message"
+      rows="5"
+      readonly
+      (click)="copyOutput()"
+    >
+{{outputContent}}</textarea
+    >
   </div>
 </div>

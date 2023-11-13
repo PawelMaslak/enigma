@@ -2,7 +2,6 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import EnigmaHelper from '../helpers/enigma-helper';
 import { LocalMemoryEntry } from '../models/local-memory-entry';
-import { MachineConfig } from '../models/machine-config';
 import { Plugboard } from '../models/plugboard';
 import { Reflector } from '../models/reflector';
 import { Rotor } from '../models/rotor';
@@ -18,7 +17,7 @@ import { LocalMemoryService } from '../services/local-memory.service';
 })
 export class EnigmaComponent implements OnInit, OnChanges {
   alphabet: string[];
-  machineConfig: MachineConfig;
+  isDevelopment: boolean;
   machineConfigurationAvailable: boolean;
   plugboard: Plugboard;
   reflectors: Reflector[];
@@ -51,15 +50,14 @@ export class EnigmaComponent implements OnInit, OnChanges {
   public getSettings(): void {
     console.log(this.rotorSection);
     console.log(this.plugboard);
-    this.toastr.success('Sukces ryje!', 'Suckes', { timeOut: 2000 });
   }
 
   public loadMachineSettings(): void {
     const parsedConfiguration = JSON.parse(localStorage.getItem('configuration'));
     const configurationLoaded = this.updateConfiguration(parsedConfiguration);
     configurationLoaded
-      ? console.log('Settings loaded')
-      : console.log('Could not load the saved settings. Using default settings');
+      ? this.toastr.success('Machine configuration loaded', 'Success', { timeOut: 2000 })
+      : this.toastr.error('Could not load machine configuration', 'Error', { timeOut: 2000 });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -84,7 +82,7 @@ export class EnigmaComponent implements OnInit, OnChanges {
     const localMemoryObject = this.localMemoryService.createLocalMemoryEntry(this.rotorSection, this.plugboard);
     localStorage.setItem('configuration', JSON.stringify(localMemoryObject));
     this.machineConfigurationAvailable = true;
-    console.log('Settings saved');
+    this.toastr.success('Machine configuration saved', 'Success', { timeOut: 2000 });
   }
 
   public toggleRingSettings(): void {
@@ -115,9 +113,8 @@ export class EnigmaComponent implements OnInit, OnChanges {
   }
 
   private initialiseMachineComponents(): void {
-    this.machineConfig = new MachineConfig(this.createDefaultRotorSection(), new Plugboard());
-    this.plugboard = this.machineConfig.plugboard;
-    this.rotorSection = this.machineConfig.rotorSection;
+    this.rotorSection = this.createDefaultRotorSection();
+    this.plugboard = new Plugboard();
   }
 
   private isToBeTurnedOver(rotor: Rotor): boolean {
@@ -239,9 +236,9 @@ export class EnigmaComponent implements OnInit, OnChanges {
     const selectedRotorOutputCharacter = selectedRotor.entryLetters[selectedRotorInternalWiringInputCharacterIndex];
 
     //This is for monitoring purposes only for development.
-    console.log(
-      `Processed letter through Rotor ${selectedRotor.name}. Input: ${selectedRotorInputCharacter}, Output: ${selectedRotorOutputCharacter}. Rotor number: ${index}`,
-    );
+    // console.log(
+    //   `Processed letter through Rotor ${selectedRotor.name}. Input: ${selectedRotorInputCharacter}, Output: ${selectedRotorOutputCharacter}. Rotor number: ${index}`,
+    // );
 
     return selectedRotorOutputCharacter;
   }
@@ -267,7 +264,7 @@ export class EnigmaComponent implements OnInit, OnChanges {
 
   private subscribeToKeyEventsService(): void {
     this.keyEventsService.keyPress$.subscribe((key) => {
-      console.log('Enigma component -> Captured key: ', key);
+      //console.log('Enigma component -> Captured key: ', key);
       this.processInput(key);
     });
   }

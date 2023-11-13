@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { KeyEventsService } from 'src/app/services/key-events.service';
 
 @Component({
@@ -12,12 +13,15 @@ export class OutputComponent implements OnInit {
   public outputContent: string = '';
   public outputLetters: string[] = [];
 
-  constructor(private keyEventsService: KeyEventsService) {}
+  constructor(
+    private keyEventsService: KeyEventsService,
+    private toastr: ToastrService,
+  ) {}
 
   public async copyOutput(): Promise<void> {
     if (this.outputContent.length > 0) {
       await navigator.clipboard.writeText(this.outputContent);
-      alert('Output copied to clipboard!');
+      this.toastr.success('Output copied to clipboard', 'Success', { timeOut: 2000 });
     }
   }
 

@@ -1,6 +1,6 @@
 <div class="rotor-section d-flex" *ngIf="!rotor.ringSettingVisible">
   <div class="window">
-    <span class="current-rotor-value"> {{this.rotor.entryLetters[0]}} </span>
+    <span class="current-rotor-value"> {{this.rotor.currentPositionLetter}} </span>
   </div>
   <div class="rotor">
     <div class="character next-character" (click)="step(1)">{{this.rotor.entryLetters[1]}}</div>
@@ -10,7 +10,7 @@
 </div>
 <div class="rotor-section d-flex" *ngIf="rotor.ringSettingVisible">
   <div class="window">
-    <span class="current-rotor-value"> {{this.rotor.ringSettingNumbersArray[0]}} </span>
+    <span class="current-rotor-value"> {{this.rotor.ringSetting}} </span>
   </div>
   <div class="rotor">
     <div class="character next-character" (click)="stepRingSetting(-1)">{{this.rotor.ringSettingNumbersArray[25]}}</div>

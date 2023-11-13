@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { EnigmaComponent } from './enigma/enigma.component';
 import { InputKeyboardComponent } from './enigma/input-keyboard/input-keyboard.component';
 import { LogoComponent } from './enigma/logo/logo.component';
-import { OptionsComponent } from './enigma/options/options.component';
 import { OutputLampsComponent } from './enigma/output-lamps/output-lamps.component';
 import { OutputComponent } from './enigma/output/output.component';
 import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
@@ -28,7 +27,6 @@ import { TopMenuComponent } from './support/top-menu/top-menu.component';
     TopMenuComponent,
     FooterComponent,
     RotorSectionComponent,
-    OptionsComponent,
     OutputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ToastrModule.forRoot()],

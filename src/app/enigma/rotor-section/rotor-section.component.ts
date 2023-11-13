@@ -11,10 +11,10 @@ import { RotorSection } from 'src/app/models/rotor-section';
 export class RotorSectionComponent implements OnInit, OnChanges {
   @Input() rotorSection: RotorSection;
 
-  reflector: Reflector;
-  rotorOne: Rotor;
-  rotorThree: Rotor;
-  rotorTwo: Rotor;
+  public reflector: Reflector;
+  public rotorOne: Rotor;
+  public rotorThree: Rotor;
+  public rotorTwo: Rotor;
 
   public getInfo(): void {
     console.log(this.rotorSection);
@@ -22,12 +22,7 @@ export class RotorSectionComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('rotorSection' in changes) {
-      const currentRotorChange = changes['rotorSection'];
-      const rotorSection = currentRotorChange.currentValue as RotorSection;
-      this.rotorOne = rotorSection.rotors[0];
-      this.rotorTwo = rotorSection.rotors[1];
-      this.rotorThree = rotorSection.rotors[2];
-      this.reflector = rotorSection.reflector;
+      this.updateRotorSection(changes);
     }
   }
 
@@ -36,5 +31,22 @@ export class RotorSectionComponent implements OnInit, OnChanges {
     this.rotorTwo = this.rotorSection.rotors[1];
     this.rotorThree = this.rotorSection.rotors[2];
     this.reflector = this.rotorSection.reflector;
+  }
+
+  private updateRotorSection(changes: SimpleChanges): void {
+    const currentRotorChange = changes['rotorSection'];
+    const updatedRotorSection = currentRotorChange.currentValue as RotorSection;
+    const oldRotorSection = currentRotorChange.previousValue as RotorSection;
+
+    this.rotorOne = updatedRotorSection.rotors[0];
+    this.rotorTwo = updatedRotorSection.rotors[1];
+    this.rotorThree = updatedRotorSection.rotors[2];
+    this.reflector = updatedRotorSection.reflector;
+
+    if (oldRotorSection.rotors[0].ringSettingVisible) {
+      updatedRotorSection.rotors.forEach((rotor) => {
+        rotor.ringSettingVisible = true;
+      });
+    }
   }
 }

@@ -18,11 +18,6 @@ export class PlugboardService {
     return `${this.letterPairs[index].letterPair}`;
   }
 
-  //Test purpose:
-  public getServiceConfig(): void {
-    console.log(this.plugboard);
-  }
-
   public initPlugboard(plugboard: Plugboard): boolean {
     this.plugboard = plugboard;
     this.colours = this.plugboard.pairColours;
