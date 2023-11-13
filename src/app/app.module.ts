@@ -4,8 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ControlPanelComponent } from './enigma/control-panel/control-panel.component';
-import { RotorControlPanelComponent } from './enigma/control-panel/rotor-control-panel/rotor-control-panel.component';
 import { EnigmaComponent } from './enigma/enigma.component';
 import { InputKeyboardComponent } from './enigma/input-keyboard/input-keyboard.component';
 import { LogoComponent } from './enigma/logo/logo.component';
@@ -30,8 +28,6 @@ import { TopMenuComponent } from './support/top-menu/top-menu.component';
     TopMenuComponent,
     FooterComponent,
     RotorSectionComponent,
-    ControlPanelComponent,
-    RotorControlPanelComponent,
     OptionsComponent,
     OutputComponent,
   ],

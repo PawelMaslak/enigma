@@ -1,9 +1,0 @@
-<div class="container">
-  <div class="control-buttons">
-    <span class="button" (click)="toggleRingSettings()">{{getRingSettingsText()}}</span>
-    <span class="button" (click)="resetSettings()">Reset Machine</span>
-    <span class="button" (click)="saveMachineSettings()">Save Settings</span>
-    <span class="button" *ngIf="machineConfigurationAvailable" (click)="loadMachineSettings()">Load Settings</span>
-    <span class="button" (click)="getPlugboardConfig()">Get Pluboard</span>
-  </div>
-</div>
