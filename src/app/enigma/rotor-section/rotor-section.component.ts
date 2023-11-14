@@ -43,7 +43,7 @@ export class RotorSectionComponent implements OnInit, OnChanges {
     this.rotorThree = updatedRotorSection.rotors[2];
     this.reflector = updatedRotorSection.reflector;
 
-    if (oldRotorSection.rotors[0].ringSettingVisible) {
+    if (oldRotorSection?.rotors[0].ringSettingVisible) {
       updatedRotorSection.rotors.forEach((rotor) => {
         rotor.ringSettingVisible = true;
       });
