@@ -5,10 +5,9 @@
 html body {
     margin: 0;
     padding: 0;
-    //min-height: 150vh;
+    min-height: 100vh;
     background-image: url("../images/old-wood.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat-x repeat-y;
     background-color: black;
     font-family: "Tahoma";
     color: $devColour;
@@ -33,5 +32,3 @@ html body {
     background: #e0ffff; 
     border-radius: 10px;
   }
-
-  //Global
