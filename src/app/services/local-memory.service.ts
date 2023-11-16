@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { LocalMemoryEntry } from '../models/local-memory-entry';
 import { Plugboard } from '../models/plugboard';
+import { LetterPair, PlugboardLetter } from '../models/plugboardletter';
 import { Rotor } from '../models/rotor';
 import { RotorDto } from '../models/rotor-dto';
 import { RotorSection } from '../models/rotor-section';
 import { DataService } from './data-service';
-import { PlugboardService } from './plugboard-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalMemoryService {
-  constructor(
-    private dataService: DataService,
-    private plugboardService: PlugboardService,
-  ) {}
+  constructor(private dataService: DataService) {}
 
   public createLocalMemoryEntry(rotorSection: RotorSection, plugboard: Plugboard): LocalMemoryEntry {
     return new LocalMemoryEntry(rotorSection, plugboard);
@@ -22,22 +19,8 @@ export class LocalMemoryService {
 
   public getPlugboardConfigurationFromLocalMemory(retrievedSettings: LocalMemoryEntry): Plugboard {
     const retrievedPlugboard = retrievedSettings.plugboard;
-
-    const plugboard = new Plugboard();
-    this.plugboardService.initPlugboard(plugboard);
-
-    retrievedPlugboard.letterPairs.forEach((pair) => {
-      //Get retrieved letters from each pair:
-      const letterOneValue = pair.letterOne.letter;
-      const letterTwoValue = pair.letterTwo.letter;
-      //Mark these letters as plugged in mapped plugboard:
-      const newPlugboardLetterOne = plugboard.plugboardLetters.find((letter) => letter.letter == letterOneValue);
-      const newPlugboardLetterTwo = plugboard.plugboardLetters.find((letter) => letter.letter == letterTwoValue);
-      //Create Pairs:
-      this.plugboardService.processKeySelect(newPlugboardLetterOne);
-      this.plugboardService.processKeySelect(newPlugboardLetterTwo);
-    });
-    return plugboard;
+    const mappedObject = this.mapRetrievedObject(retrievedPlugboard);
+    return mappedObject;
   }
 
   public getRotorsConfigurationFromLocalMemory(retrievedSettings: LocalMemoryEntry): RotorSection {
@@ -97,6 +80,47 @@ export class LocalMemoryService {
     this.configureRingSetting(rotorDto, foundRotor);
 
     return foundRotor;
+  }
+
+  //OK
+  private mapPlugboardLetter(plugboardLetter: unknown): PlugboardLetter {
+    const mappedLetter = new PlugboardLetter(plugboardLetter['letter']);
+
+    mappedLetter.isPlugged = plugboardLetter['isPlugged'] as boolean;
+    mappedLetter.letterNumber = plugboardLetter['letterNumber'] as number;
+    if (plugboardLetter['pairColour'] != null) {
+      mappedLetter.pairColour = plugboardLetter['pairColour'] as string;
+    }
+    mappedLetter.pluggedLetter = plugboardLetter['pluggedLetter'];
+
+    return mappedLetter;
+  }
+
+  private mapRetrievedObject(retrievedObject: unknown): Plugboard {
+    const plugboard = new Plugboard();
+    plugboard.plugboardLetters = [];
+    const allowedPairsNumber = retrievedObject['allowedPairsNumber'] as number;
+    const letterPairs = retrievedObject['letterPairs'] as unknown[];
+    const plugboardLetters = retrievedObject['plugboardLetters'] as unknown[];
+    const pairColours = retrievedObject['pairColours'] as string[];
+
+    plugboard.allowedPairsNumber = allowedPairsNumber;
+    plugboard.pairColours = pairColours;
+
+    letterPairs.forEach((pair) => {
+      const restoredLetterOne = this.mapPlugboardLetter(pair['letterOne']);
+      const restoredLetterTwo = this.mapPlugboardLetter(pair['letterTwo']);
+
+      const letterPair = new LetterPair(restoredLetterOne, restoredLetterTwo);
+      plugboard.letterPairs.push(letterPair);
+    });
+
+    plugboardLetters.forEach((letter) => {
+      const restoredLetter = this.mapPlugboardLetter(letter);
+      plugboard.plugboardLetters.push(restoredLetter);
+    });
+
+    return plugboard;
   }
 
   private verifyConfigCorrectness(retrievedSettings: LocalMemoryEntry, rotorSection: RotorSection): boolean {
