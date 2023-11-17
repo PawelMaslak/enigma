@@ -1,0 +1,36 @@
+.content {
+
+    .page-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-header {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .sub-header {
+        font-weight: bold;
+    }
+
+    .paragraph {
+        text-align: justify;
+        display: flex;
+
+        .enigma-machine {
+            width: 250px;
+            border: 2px solid #E1C16E;
+        }
+    }
+}
+
+img:hover {
+    cursor: pointer;
+}

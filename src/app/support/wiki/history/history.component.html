@@ -1,0 +1,90 @@
+<div class="content">
+  <div class="header">
+    <span class="main-header">History of Enigma</span>
+    <span class="sub-header pt-2">Origins of the Rotor Machine</span>
+  </div>
+  <div class="page-content pt-3">
+    <div class="row">
+      <div class="col-8">
+        <span class="paragraph pt-2">
+          The need for secure communications for both military as civilian use became obvious in the early 1900s, with
+          the rise of wireless communication. The search to replace the impractical and time-consuming hand ciphers
+          began. In 1917, the American Edward Hugh Hebern developed a cipher machine with rotating disks, each disk
+          performing a substitution cipher. Hebern's idea was the base for many similar machines, developed in several
+          other countries.
+        </span>
+        <span class="paragraph pt-2">
+          In 1918, Engineer Arthur Scherbius patented a cipher machine using rotors. The German Navy and Foreign Offices
+          were approached, but were not interested. In 1923, the rights for the patents went to Chiffriermaschinen-AG, a
+          firm with Scherbius on the board of directors, that commercialized the machine. In 1927, Scherbius bought the
+          1919 patent from of a similar machine from the Dutchman Koch, in order to secure his own patent, approved in
+          1925.
+        </span>
+      </div>
+      <div class="col-4">
+        <span class="paragraph pt-2">
+          <img
+            class="enigma-machine"
+            data-bs-toggle="modal"
+            data-bs-target="#enigmaModal"
+            src="../../../../assets/images/wiki/enigma-machine.jpg"
+            alt=""
+          />
+        </span>
+      </div>
+    </div>
+
+    <span class="paragraph pt-2"> </span>
+    <span class="paragraph pt-2">
+      The first cipher machine, the Handelsmaschine, was developed in 1923. It was a large and heavy machine with an
+      integrated typewriter and weighed about 50 Kg. In 1924, the similar Schreibende Enigma was introduced. The weight
+      and size of these machines made them unattractive for military use. In 1924, the development of the reflector, an
+      idea of Scherbius' colleague Willi Korn, made possible the compact and much lighter Enigma A and Enigma B with two
+      rotors, reflector, and a lamp panel that replaced the bulky typewriter. The Enigma B Mark II had three rotors and
+      a reflector. In 1925, the improved Enigma C was introduced, and in 1926 its successor Enigma D which had three
+      rotors and a reflector that could be set in one of the 26 positions.
+    </span>
+    <span class="paragraph pt-2"
+      >The Enigma D was the basis for several commercial machines, in varying versions and with different rotor wirings.
+      These were sold across Europe to military and diplomatic services, and used before and during the Second World
+      War. These were the Enigma K, Enigma T or Tirpitz Enigma, Zählwerk Enigma and Enigma G that both moved the rotors
+      by gears instead of pawls, the Swiss-K, the Enigma Z that carried only numbers, The Reichsbahn Enigma or Railway
+      Enigma, and the Enigma Z. None of those machines had a plugboard, a military feature that would increase security
+      considerably from 1935 onwards.
+    </span>
+    <span class="paragraph pt-2">
+      Several intelligence services succeeded in breaking these civil and military Enigma versions, based on the
+      commercial D. The Italian Navy bought the commercial Enigma D, as did Spain during the Spanish Civil War. The
+      Swiss army used the Enigma K and Japan used the Enigma T, also called Tirpitz Enigma, but the Japanese also
+      developed their own version of the Enigma T, with the rotors placed horizontally. The messages of both models T
+      and K models were broken as well. The Railway Enigma, used by the German Reichsbahn in Eastern Europe, was
+      partially broken from 1941 onwards.
+    </span>
+  </div>
+  <div class="header">
+    <span class="sub-header pt-2">Military Enigma</span>
+  </div>
+</div>
+
+<app-modal
+  [id]="'enigmaModal'"
+  [imagePath]="'../../../../assets/images/wiki/enigma-machine.jpg'"
+  [title]="'Enigma Machine'"
+></app-modal>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
