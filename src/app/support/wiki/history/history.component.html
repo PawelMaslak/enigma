@@ -27,14 +27,12 @@
             class="enigma-machine"
             data-bs-toggle="modal"
             data-bs-target="#enigmaModal"
-            src="../../../../assets/images/wiki/enigma-machine.jpg"
-            alt=""
+            [src]="'../../../../assets/images/wiki/enigma-machine.jpg'"
           />
+          <app-loading></app-loading>
         </span>
       </div>
     </div>
-
-    <span class="paragraph pt-2"> </span>
     <span class="paragraph pt-2">
       The first cipher machine, the Handelsmaschine, was developed in 1923. It was a large and heavy machine with an
       integrated typewriter and weighed about 50 Kg. In 1924, the similar Schreibende Enigma was introduced. The weight
@@ -64,6 +62,76 @@
   <div class="header">
     <span class="sub-header pt-2">Military Enigma</span>
   </div>
+  <div class="page-content pt-3">
+    <div class="row">
+      <div class="col-8">
+        <span class="paragraph pt-2"
+          >In 1926, the commercial Enigma was purchased by the German Navy and adapted for military use. They called it
+          Funkschlüssel C. Meanwhile, Chiffriermaschinen-AG developed a special Enigma with rotors that have the same
+          contact alignment as the D rotors, but with teeth, multiple notches and are advanced by cog wheels instead of
+          pawls and ratchets (see patent drawing left). It also had a rotating reflector and a counter on its left.
+          Today, only one such machine is known. This probably experimental model, presented in 1928 but exceptionally
+          only patented in 1931, lead to the Enigma G.</span
+        >
+        <span class="paragraph pt-2"
+          >The Enigma G had different rotors with a zigzag pin placement and the counter on its right. Its rotors, which
+          also had multiple notches, were moved by a system of gears, similar to the 1928 special predecessor. Already
+          in 1928, the German Abwehr (Secret Service) bought the 12 Kg light Enigma G, also called Zahlwerk (clock-work)
+          Enigma due to it's counter on the front panel. The Enigma G was exclusively used by the Abwehr.</span
+        >
+        <span class="paragraph pt-2"
+          >In 1932, the Wehrmacht revised the commercial Enigma D and added the plugboard at the front of the machine.
+          This version, the Enigma I, became known as the Wehrmacht Enigma and was introduced on a large scale in the
+          Heer (Army) and public authorities. The Luftwaffe (Air Force) followed the Heer's lead in 1935. The Wehrmacht
+          Enigma came initially with three rotors. From 1939 on they were equipped with five rotors.</span
+        >
+      </div>
+      <div class="col-4">
+        <span class="paragraph pt-2">
+          <img
+            class="enigma-machine"
+            data-bs-toggle="modal"
+            data-bs-target="#kriegsmarineEnigmaModal"
+            src="../../../../assets/images/wiki/kriegsmarine-enigma.jpg"
+            alt=""
+          />
+        </span>
+      </div>
+    </div>
+    <span class="paragraph pt-2"
+      >In 1934, the German Navy adopted the Wehrmacht model, with its securer plugboard, and extended the set of rotors
+      to eight. The Navy machine was called Funkschlüssel M or M3. In 1941, although reassured by the Abwehr that the
+      Enigma M3 was unbreakable, Admiral Karl Dönitz insisted on improvement of the Kriegsmarine Enigma. Early in 1942,
+      the famous four rotor M4 model was introduced in the Kriegsmarine.</span
+    >
+    <span class="paragraph pt-2">
+      During the war, different types of reflectors were introduced. The B and C reflector were used on Heer and
+      Luftwaffe models, and also on the Kriegsmarine M3. The Kriegsmarine M4 used a thin B and C version, to fit in the
+      4 rotor machine, with other wirings, but if 'zeroized' in combination with its fourth rotor compatible with the
+      Heer and Luftwaffe version. By the End of the war German Command tried to introduce a new type D rewireable
+      reflector.
+    </span>
+    <span class="paragraph pt-2">
+      Early use of this reflector posed a significant problem to Allied codebreakers, but problems in distribution of
+      this reflector and their key sheets prevented a widespread use of the D reflector. Another military add-on,
+      introduced in 1944 by the Luftwaffe, was an extra plugboard switch, called the Uhr (clock), a switch with 40
+      positions, each position resulting in a different combination of plug wiring.
+    </span>
+    <span class="paragraph pt-2"
+      >An estimated total of 100,000 Enigma machines were produced. Although generally known as Enigma, there were only
+      a few machines that actually carried the name Enigma and the logo. Most machines only had a serial number and
+      fabrication code. The machines were produced in different factories on various locations such as Ertel-Werk für
+      Feinmechanik in München, Olympia Büromaschinenwerke in Erfurt, Chiffriermaschinengesellschaft Heimsoeth & Rinke in
+      Berlin, Atlas-Werke Maschinenfabrik in Bremen and Konski & Krüger in Berlin. The machines that survived the war
+      were confiscated by the Allies and mostly sold to other countries. The rotors of these machines were often
+      rewired. Of course, they forgot to mention that they were able to break them.</span
+    >
+    <div class="row">
+      <div class="col-4">Col</div>
+      <div class="col-4">Col</div>
+      <div class="col-4">Col</div>
+    </div>
+  </div>
 </div>
 
 <app-modal
@@ -71,20 +139,8 @@
   [imagePath]="'../../../../assets/images/wiki/enigma-machine.jpg'"
   [title]="'Enigma Machine'"
 ></app-modal>
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">...</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+<app-modal
+  [id]="'kriegsmarineEnigmaModal'"
+  [imagePath]="'../../../../assets/images/wiki/kriegsmarine-enigma.jpg'"
+  [title]="'Kriegsmarine Enigma Machine'"
+></app-modal>

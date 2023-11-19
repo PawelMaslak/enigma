@@ -12,11 +12,14 @@ import { OutputComponent } from './enigma/output/output.component';
 import { PlugboardComponent } from './enigma/plugboard/plugboard.component';
 import { RotorSectionComponent } from './enigma/rotor-section/rotor-section.component';
 import { RotorComponent } from './enigma/rotor/rotor.component';
+import { AboutComponent } from './support/about/about.component';
 import { FooterComponent } from './support/footer/footer.component';
+import { LoadingComponent } from './support/loading/loading.component';
 import { TopMenuComponent } from './support/top-menu/top-menu.component';
-import { WikiComponent } from './support/wiki/wiki.component';
 import { HistoryComponent } from './support/wiki/history/history.component';
 import { ModalComponent } from './support/wiki/modal/modal.component';
+import { WikiComponent } from './support/wiki/wiki.component';
+import { ImageComponent } from './support/image/image.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { ModalComponent } from './support/wiki/modal/modal.component';
     WikiComponent,
     HistoryComponent,
     ModalComponent,
+    LoadingComponent,
+    AboutComponent,
+    ImageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ToastrModule.forRoot()],
   providers: [],

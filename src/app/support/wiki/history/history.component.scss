@@ -34,3 +34,14 @@
 img:hover {
     cursor: pointer;
 }
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+  }

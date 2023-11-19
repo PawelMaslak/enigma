@@ -1,0 +1,17 @@
+<div class="container mt-5 mb-5">
+  <h2>Image Component</h2>
+  <div class="image-section">
+    <div *ngIf="isLoading">Loading...</div>
+    <img #imageElement src="../../../../assets/images/wiki/enigma-machine.jpg" alt="" />
+  </div>
+  <div class="image-section">
+    <img
+      class="enigma"
+      #image
+      (load)="onLoadImage(image, loading.nativeElement)"
+      src="../../../assets/images/wiki/kriegsmarine-enigma.jpg"
+      alt=""
+    />
+    <div #loading *ngIf="isLoadingTwo" class="loading">Loading...</div>
+  </div>
+</div>

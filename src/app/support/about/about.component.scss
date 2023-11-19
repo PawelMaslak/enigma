@@ -1,0 +1,23 @@
+.container { 
+    min-height: 100vh;
+    background-color: #E0C9A6;
+    width: 800px;
+    box-shadow: 5px 5px 5px 10px #E0C9A6;
+
+    img {
+        width: 300px;
+        display: none;
+        opacity: 0;
+        transition: .7s all ease-in-out;
+    }
+
+    .enigma {
+        display: none;
+        transition: .7s all ease-in-out;
+        opacity: 0;
+    }
+
+    .loading {
+        transition: .7s all ease-in-out;
+    }
+}
