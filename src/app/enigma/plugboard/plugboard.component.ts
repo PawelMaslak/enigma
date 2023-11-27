@@ -8,57 +8,33 @@ import { LetterPair, PlugboardLetter } from 'src/app/models/plugboardletter';
   templateUrl: './plugboard.component.html',
   styleUrls: ['./plugboard.component.scss'],
 })
-
-//The problem here is that we use separate arrays for the plugboard parts which then are not updated when we load config.
-//TODO: Remove keyPairs and letterPairs properties so all we bound to plugboard.
 export class PlugboardComponent implements OnInit, OnChanges {
   @Input() plugboard: Plugboard;
 
   firstRow: PlugboardLetter[];
-  //letterPairs: LetterPair[];
   secondRow: PlugboardLetter[];
   thirdRow: PlugboardLetter[];
-  private allowedPairsNumber: number;
-  private colours: string[];
-  constructor(private toastr: ToastrService) {}
 
-  //private keyPairs: PlugboardLetter[] = []; //Missing
+  private allowedPairsNumber: number;
+
+  constructor(private toastr: ToastrService) {}
 
   public getLetterPairString(index: number): string {
     return `${this.plugboard.letterPairs[index].letterPair}`;
   }
 
-  public letterPlugged(letter: string): boolean {
-    return this.plugboard.keyPairs.find((x) => x.letter === letter) != null;
-  }
-
-  //Add method to check if the plugboard has been different from previous version when calling method.
   ngOnChanges(changes: SimpleChanges): void {
     if ('plugboard' in changes) {
       const updatedPlugboard = changes['plugboard'].currentValue as Plugboard;
-
       this.plugboard = updatedPlugboard;
-
-      //To separate method:
-      this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
-      this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
-      this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
-      this.colours = this.plugboard.pairColours;
+      this.mapPlugboardLettersLayout();
       this.allowedPairsNumber = this.plugboard.allowedPairsNumber;
     }
   }
 
   ngOnInit(): void {
-    //To separate method:
-    this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
-    this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
-    this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
-    this.colours = this.plugboard.pairColours;
+    this.mapPlugboardLettersLayout();
     this.allowedPairsNumber = this.plugboard.allowedPairsNumber;
-  }
-
-  public pairKey(plugboardLetter: PlugboardLetter): void {
-    this.processKeySelect(plugboardLetter);
   }
 
   public processKeySelect(plugboardLetter: PlugboardLetter): void {
@@ -76,13 +52,15 @@ export class PlugboardComponent implements OnInit, OnChanges {
 
   private allocateColour(letterPair: LetterPair, action: string): void {
     if (action === 'add') {
-      const pickedColour = this.colours.shift();
+      //const pickedColour = this.colours.shift();
+      const pickedColour = this.plugboard.pairColours.shift();
       letterPair.pairColour = pickedColour;
       letterPair.letterOne.pairColour = pickedColour;
       letterPair.letterTwo.pairColour = pickedColour;
     } else {
       const pairColour = letterPair.pairColour; //Pick colour from one of the items.
-      this.colours.push(pairColour);
+      //this.colours.push(pairColour);
+      this.plugboard.pairColours.push(pairColour);
       [letterPair, letterPair.letterOne, letterPair.letterTwo].forEach((item) => {
         item.pairColour = null;
       });
@@ -139,6 +117,12 @@ export class PlugboardComponent implements OnInit, OnChanges {
       }
     }
     return null;
+  }
+
+  private mapPlugboardLettersLayout(): void {
+    this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
+    this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
+    this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
   }
 
   private processInput(plugboardLetter: PlugboardLetter): void {

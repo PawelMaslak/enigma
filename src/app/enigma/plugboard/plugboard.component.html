@@ -4,7 +4,7 @@
       <div
         class="plug d-flex align-items-center justify-content-center"
         *ngFor="let plug of firstRow"
-        (click)="pairKey(plug)"
+        (click)="processKeySelect(plug)"
       >
         <div class="letter">{{plug.letter}}</div>
         <div class="holes">
@@ -24,7 +24,7 @@
       <div
         class="plug d-flex align-items-center justify-content-center"
         *ngFor="let plug of secondRow"
-        (click)="pairKey(plug)"
+        (click)="processKeySelect(plug)"
       >
         <div class="letter">{{plug.letter}}</div>
         <div class="holes">
@@ -44,7 +44,7 @@
       <div
         class="plug d-flex align-items-center justify-content-center"
         *ngFor="let plug of thirdRow"
-        (click)="pairKey(plug)"
+        (click)="processKeySelect(plug)"
       >
         <div class="letter">{{plug.letter}}</div>
         <div class="holes">
