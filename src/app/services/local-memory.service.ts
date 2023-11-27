@@ -112,7 +112,12 @@ export class LocalMemoryService {
       const restoredLetterTwo = this.mapPlugboardLetter(pair['letterTwo']);
 
       const letterPair = new LetterPair(restoredLetterOne, restoredLetterTwo);
+      letterPair.pairColour = letterPair.letterOne.pairColour;
       plugboard.letterPairs.push(letterPair);
+
+      plugboard.keyPairs.push(restoredLetterOne);
+      plugboard.keyPairs.push(restoredLetterTwo);
+      //Add also keyPairs here!
     });
 
     plugboardLetters.forEach((letter) => {

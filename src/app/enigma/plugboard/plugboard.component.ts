@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Plugboard } from 'src/app/models/plugboard';
 import { LetterPair, PlugboardLetter } from 'src/app/models/plugboardletter';
 
@@ -11,92 +12,91 @@ export class PlugboardComponent implements OnInit, OnChanges {
   @Input() plugboard: Plugboard;
 
   firstRow: PlugboardLetter[];
-  letterPairs: LetterPair[];
   secondRow: PlugboardLetter[];
   thirdRow: PlugboardLetter[];
+
   private allowedPairsNumber: number;
-  private colours: string[];
-  private keyPairs: PlugboardLetter[] = [];
+
+  constructor(private toastr: ToastrService) {}
 
   public getLetterPairString(index: number): string {
-    return `${this.letterPairs[index].letterPair}`;
+    return `${this.plugboard.letterPairs[index].letterPair}`;
   }
 
-  public letterPlugged(letter: string): boolean {
-    return this.keyPairs.find((x) => x.letter === letter) != null;
-  }
-
-  //Add method to check if the plugboard has been different from previous version when calling method.
   ngOnChanges(changes: SimpleChanges): void {
     if ('plugboard' in changes) {
       const updatedPlugboard = changes['plugboard'].currentValue as Plugboard;
-
       this.plugboard = updatedPlugboard;
-
-      //To separate method:
-      this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
-      this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
-      this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
-      this.colours = this.plugboard.pairColours;
+      this.mapPlugboardLettersLayout();
       this.allowedPairsNumber = this.plugboard.allowedPairsNumber;
-      this.letterPairs = this.plugboard.letterPairs;
     }
   }
 
   ngOnInit(): void {
-    //To separate method:
-    this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
-    this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
-    this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
-    this.colours = this.plugboard.pairColours;
+    this.mapPlugboardLettersLayout();
     this.allowedPairsNumber = this.plugboard.allowedPairsNumber;
-    this.letterPairs = this.plugboard.letterPairs;
-  }
-
-  public pairKey(plugboardLetter: PlugboardLetter): void {
-    this.processKeySelect(plugboardLetter);
   }
 
   public processKeySelect(plugboardLetter: PlugboardLetter): void {
     if (!this.canCreatePair(plugboardLetter)) {
-      alert(`You cannot create more than ${this.allowedPairsNumber} letter pairs.`);
+      this.toastr.error(`You cannot create more than ${this.allowedPairsNumber} letter pairs.`, 'Plugboard Error');
     } else {
       this.processInput(plugboardLetter);
     }
   }
 
   private addToKeyPairs(plugboardLetter: PlugboardLetter): void {
-    this.keyPairs.push(plugboardLetter);
+    this.plugboard.keyPairs.push(plugboardLetter);
     plugboardLetter.togglePlug();
   }
 
   private allocateColour(letterPair: LetterPair, action: string): void {
     if (action === 'add') {
-      const pickedColour = this.colours.shift();
+      //const pickedColour = this.colours.shift();
+      const pickedColour = this.plugboard.pairColours.shift();
       letterPair.pairColour = pickedColour;
       letterPair.letterOne.pairColour = pickedColour;
       letterPair.letterTwo.pairColour = pickedColour;
     } else {
-      const pairColour = letterPair.pairColour;
-      this.colours.push(pairColour);
+      const pairColour = letterPair.pairColour; //Pick colour from one of the items.
+      //this.colours.push(pairColour);
+      this.plugboard.pairColours.push(pairColour);
       [letterPair, letterPair.letterOne, letterPair.letterTwo].forEach((item) => {
         item.pairColour = null;
       });
+
+      const plugboardLetterCollectionLetterOne = this.plugboard.plugboardLetters.find(
+        (letter) => letter.letter === letterPair.letterOne.letter,
+      );
+
+      if (plugboardLetterCollectionLetterOne.isPlugged) {
+        plugboardLetterCollectionLetterOne.togglePlug();
+        plugboardLetterCollectionLetterOne.pairColour = null;
+      }
+
+      const plugboardLetterCollectionLetterTwo = this.plugboard.plugboardLetters.find(
+        (letter) => letter.letter === letterPair.letterTwo.letter,
+      );
+
+      if (plugboardLetterCollectionLetterTwo.isPlugged) {
+        plugboardLetterCollectionLetterTwo.togglePlug();
+        plugboardLetterCollectionLetterTwo.pairColour = null;
+      }
     }
   }
 
   private canCreatePair(plugboardLetter: PlugboardLetter): boolean {
-    const newPairAllowed = this.letterPairs.length < this.allowedPairsNumber;
+    const newPairAllowed = this.plugboard.letterPairs.length < this.allowedPairsNumber;
     return newPairAllowed || plugboardLetter.isPlugged;
   }
 
   private createLetterPair(): void {
-    const indexOfLastLetter = this.getIndexOfLastItem(this.keyPairs);
-    const letterOne = this.keyPairs[indexOfLastLetter - 1];
-    const letterTwo = this.keyPairs[indexOfLastLetter];
+    const indexOfLastLetter = this.getIndexOfLastItem(this.plugboard.keyPairs);
+    const letterOne = this.plugboard.keyPairs[indexOfLastLetter - 1];
+    const letterTwo = this.plugboard.keyPairs[indexOfLastLetter];
     const letterPair = new LetterPair(letterOne, letterTwo);
     this.allocateColour(letterPair, 'add');
-    this.letterPairs.push(letterPair);
+    this.plugboard.letterPairs.push(letterPair);
   }
 
   private getIndexOfLastItem<T>(array: T[]): number {
@@ -104,16 +104,25 @@ export class PlugboardComponent implements OnInit, OnChanges {
   }
 
   private isLetterInKeyPairs(plugboardLetter: PlugboardLetter): boolean {
-    return this.keyPairs.some((keyPair) => keyPair.letter === plugboardLetter.letter);
+    return this.plugboard.keyPairs.some((keyPair) => keyPair.letter === plugboardLetter.letter);
   }
 
   private isPartOfLetterPair(plugboardLetter: PlugboardLetter): LetterPair {
-    for (const letterPair of this.letterPairs) {
-      if (letterPair.letterOne === plugboardLetter || letterPair.letterTwo === plugboardLetter) {
+    for (const letterPair of this.plugboard.letterPairs) {
+      if (
+        letterPair.letterOne.letter === plugboardLetter.letter ||
+        letterPair.letterTwo.letter === plugboardLetter.letter
+      ) {
         return letterPair;
       }
     }
     return null;
+  }
+
+  private mapPlugboardLettersLayout(): void {
+    this.firstRow = this.plugboard.plugboardLetters.slice(0, 9);
+    this.secondRow = this.plugboard.plugboardLetters.slice(9, 17);
+    this.thirdRow = this.plugboard.plugboardLetters.slice(17, 26);
   }
 
   private processInput(plugboardLetter: PlugboardLetter): void {
@@ -126,7 +135,7 @@ export class PlugboardComponent implements OnInit, OnChanges {
       }
     } else {
       this.addToKeyPairs(plugboardLetter);
-      if (this.keyPairs.length % 2 === 0) {
+      if (this.plugboard.keyPairs.length % 2 === 0) {
         this.createLetterPair();
       } else {
         plugboardLetter.pairColour = 'brown';
@@ -135,9 +144,10 @@ export class PlugboardComponent implements OnInit, OnChanges {
   }
 
   private removeItem(plugboardLetter: PlugboardLetter): void {
-    const index = this.keyPairs.indexOf(plugboardLetter);
+    const letterInKeyPairs = this.plugboard.keyPairs.find((letter) => letter.letter === plugboardLetter.letter);
+    const index = this.plugboard.keyPairs.indexOf(letterInKeyPairs);
     if (index > -1) {
-      this.keyPairs.splice(index, 1);
+      this.plugboard.keyPairs.splice(index, 1);
     }
   }
 
@@ -151,7 +161,7 @@ export class PlugboardComponent implements OnInit, OnChanges {
     letterPair.letterTwo.togglePlug();
     this.removeItem(letterPair.letterOne);
     this.removeItem(letterPair.letterTwo);
-    this.letterPairs.splice(this.letterPairs.indexOf(letterPair), 1);
+    this.plugboard.letterPairs.splice(this.plugboard.letterPairs.indexOf(letterPair), 1);
     this.allocateColour(letterPair, 'remove');
   }
 }
