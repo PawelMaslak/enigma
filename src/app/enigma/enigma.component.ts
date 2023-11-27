@@ -17,7 +17,7 @@ import { LocalMemoryService } from '../services/local-memory.service';
 })
 export class EnigmaComponent implements OnInit, OnChanges {
   alphabet: string[];
-  isDevelopment: boolean = true;
+  isDevelopment: boolean = false;
   machineConfigurationAvailable: boolean;
   plugboard: Plugboard;
   reflectors: Reflector[];
